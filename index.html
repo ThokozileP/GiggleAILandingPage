@@ -1,0 +1,1598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="GAMM installs a decision control layer over healthcare AI systems in production, making AI-driven decisions visible, owned, and interruptible under EU AI Act and MDR pressure.">
+  <title>AI Decision Control for Healthcare AI | GAMM by Giggle AI Innovation</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Canonical -->
+  <link rel="canonical" href="https://giggleaiinnovation.com">
+
+  <!-- Open Graph -->
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://giggleaiinnovation.com">
+  <meta property="og:title"       content="AI Decision Control for Healthcare AI | GAMM by Giggle AI Innovation">
+  <meta property="og:description" content="GAMM installs a decision control layer over healthcare AI systems in production, making AI-driven decisions visible, owned, and interruptible under EU AI Act and MDR pressure.">
+  <meta property="og:image"       content="asset/GAMM Linkedin Cover.png">
+
+  <!-- Twitter / X -->
+  <meta name="twitter:card"        content="summary_large_image">
+  <meta name="twitter:title"       content="AI Decision Control for Healthcare AI | GAMM by Giggle AI Innovation">
+  <meta name="twitter:description" content="GAMM installs a decision control layer over healthcare AI systems in production, making AI-driven decisions visible, owned, and interruptible under EU AI Act and MDR pressure.">
+  <meta name="twitter:image"       content="asset/GAMM Linkedin Cover.png">
+
+  <style>
+    /* ─── RESET ─────────────────────────────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    /* ─── TOKENS ─────────────────────────────────────────────────────────────── */
+    :root {
+      --ink:        #06070E;
+      --bg:         #07080F;
+      --surface:    #0C0D18;
+      --surface-2:  #10121F;
+      --border:     #181B28;
+      --border-2:   #20243A;
+      --gold:       #2060E8;
+      --gold-dim:   rgba(32,96,232,.35);
+      --gold-faint: rgba(32,96,232,.07);
+      --cream:      #F2EEE6;
+      --muted:      #7A7770;
+      --ghost:      #383C50;
+      --white:      #FAFAF8;
+    }
+
+    /* ─── BASE ───────────────────────────────────────────────────────────────── */
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3, .serif {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ─── LAYOUT ─────────────────────────────────────────────────────────────── */
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+
+    @media (max-width: 900px) { .wrap { padding: 0 32px; } }
+    @media (max-width: 600px) { .wrap { padding: 0 20px; } }
+
+    /* ─── NAV ────────────────────────────────────────────────────────────────── */
+    #nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      padding: 22px 0;
+      background: rgba(9,9,9,.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      transition: border-color .4s;
+    }
+
+    #nav.scrolled { border-bottom-color: var(--gold-dim); }
+
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-brand { display: flex; flex-direction: column; gap: 3px; }
+
+    .nav-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 24px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--white);
+    }
+
+    .nav-by {
+      font-size: 9.5px;
+      font-weight: 400;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    .btn {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: 13px 28px;
+      cursor: pointer;
+      border: none;
+      transition: opacity .2s, transform .2s;
+    }
+
+    .btn:hover { opacity: .86; transform: translateY(-1px); }
+
+    .btn-gold { background: var(--gold); color: #ffffff; }
+
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+    }
+
+    /* ─── HERO ───────────────────────────────────────────────────────────────── */
+    #hero {
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 120px;
+      border-bottom: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Radial glow behind headline */
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -10%;
+      left: -5%;
+      width: 70%;
+      height: 80%;
+      background: radial-gradient(ellipse at 30% 40%, rgba(32,96,232,.055) 0%, transparent 65%);
+      pointer-events: none;
+    }
+
+    /* Large ghosted wordmark */
+    .hero-watermark {
+      position: absolute;
+      right: -4vw;
+      bottom: -4%;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 28vw;
+      font-weight: 700;
+      line-height: .85;
+      color: transparent;
+      -webkit-text-stroke: 1px rgba(32,96,232,.045);
+      pointer-events: none;
+      user-select: none;
+      letter-spacing: -.02em;
+    }
+
+    .hero-inner { position: relative; z-index: 1; max-width: 860px; }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 36px;
+    }
+
+    .eyebrow::before {
+      content: '';
+      display: block;
+      width: 32px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .6;
+    }
+
+    .hero-h1 {
+      font-size: clamp(48px, 7vw, 88px);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 36px;
+    }
+
+    .hero-h1 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .hero-sub {
+      font-size: clamp(15px, 1.6vw, 18px);
+      font-weight: 300;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 600px;
+      margin-bottom: 56px;
+    }
+
+    .hero-actions {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      flex-wrap: wrap;
+    }
+
+    .hero-note {
+      font-size: 11.5px;
+      color: var(--ghost);
+      letter-spacing: .06em;
+    }
+
+    /* ─── TICKER ─────────────────────────────────────────────────────────────── */
+    .ticker-wrap {
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      padding: 16px 0;
+      overflow: hidden;
+      background: var(--surface);
+    }
+
+    .ticker-track {
+      display: flex;
+      gap: 0;
+      animation: ticker 30s linear infinite;
+      white-space: nowrap;
+    }
+
+    .ticker-track:hover { animation-play-state: paused; }
+
+    @keyframes ticker {
+      0%   { transform: translateX(0); }
+      100% { transform: translateX(-50%); }
+    }
+
+    .ticker-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 32px;
+      padding: 0 48px;
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ghost);
+    }
+
+    .ticker-dot {
+      display: inline-block;
+      width: 3px;
+      height: 3px;
+      border-radius: 50%;
+      background: var(--gold);
+      opacity: .6;
+      flex-shrink: 0;
+    }
+
+    /* ─── SECTION SKELETON ───────────────────────────────────────────────────── */
+    .section {
+      padding: 128px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .section--surface { background: var(--surface); }
+
+    .sec-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: .3em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 64px;
+    }
+
+    .sec-label::after {
+      content: '';
+      display: block;
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+      opacity: .45;
+    }
+
+    /* ─── SECTION 1: PROBLEM ─────────────────────────────────────────────────── */
+    .problem-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+    }
+
+    .problem-h2 {
+      font-size: clamp(32px, 3.8vw, 52px);
+      font-weight: 500;
+      margin-bottom: 28px;
+      color: var(--white);
+    }
+
+    .problem-body p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .problem-list { margin-top: 8px; }
+
+    .problem-item {
+      padding: 28px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .problem-item:first-child { border-top: 1px solid var(--border); }
+
+    .problem-item-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      color: var(--cream);
+      margin-bottom: 9px;
+    }
+
+    .problem-item p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 860px) {
+      .problem-grid { grid-template-columns: 1fr; gap: 56px; }
+    }
+
+    /* ─── SECTION 2: WHAT GAMM IS ────────────────────────────────────────────── */
+    .what-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+      margin-bottom: 80px;
+    }
+
+    .what-h2 {
+      font-size: clamp(32px, 3.8vw, 52px);
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .what-body {
+      padding-top: 8px;
+    }
+
+    .what-body p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 18px;
+    }
+
+    .not-tags {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+      margin-top: 28px;
+    }
+
+    .not-tag {
+      font-size: 11px;
+      font-weight: 400;
+      letter-spacing: .08em;
+      color: var(--ghost);
+      padding: 6px 12px;
+      border: 1px solid var(--border-2);
+      text-decoration: line-through;
+      text-decoration-color: rgba(255,255,255,.15);
+    }
+
+    .pillars {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .pillar {
+      background: var(--surface-2);
+      padding: 48px 40px 52px;
+      position: relative;
+    }
+
+    .pillar::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--gold) 0%, transparent 70%);
+      opacity: 0;
+      transition: opacity .3s;
+    }
+
+    .pillar:hover::before { opacity: 1; }
+
+    .pillar-n {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 56px;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: .2;
+      line-height: 1;
+      margin-bottom: 24px;
+      display: block;
+    }
+
+    .pillar-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 14px;
+    }
+
+    .pillar p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .gamm-principle {
+      margin-top: 1px;
+      background: var(--gold-faint);
+      border: 1px solid var(--gold-dim);
+      padding: 52px 56px;
+    }
+
+    .gamm-principle-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .gamm-principle blockquote {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 2.4vw, 28px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--cream);
+      line-height: 1.45;
+    }
+
+    @media (max-width: 860px) {
+      .what-intro { grid-template-columns: 1fr; gap: 48px; }
+      .pillars { grid-template-columns: 1fr; }
+      .gamm-principle { padding: 36px 28px; }
+    }
+
+    /* ─── SECTION 3: HOW IT WORKS ────────────────────────────────────────────── */
+    .steps-header {
+      max-width: 600px;
+      margin-bottom: 80px;
+    }
+
+    .steps-h2 {
+      font-size: clamp(32px, 3.8vw, 50px);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .steps-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 96px 1fr;
+      gap: 72px;
+      padding: 72px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .step:first-of-type { border-top: 1px solid var(--border); }
+
+    .step-roman {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 80px;
+      font-weight: 300;
+      color: var(--gold);
+      opacity: .18;
+      line-height: .95;
+      padding-top: 4px;
+      user-select: none;
+    }
+
+    .step-phase {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 10px;
+      display: block;
+    }
+
+    .step-name {
+      font-size: clamp(26px, 3vw, 38px);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .step-desc {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      max-width: 580px;
+      margin-bottom: 10px;
+    }
+
+    .step-note {
+      font-size: 13px;
+      color: var(--muted);
+      line-height: 1.75;
+      max-width: 580px;
+      margin-bottom: 22px;
+      padding-left: 16px;
+      border-left: 1px solid var(--border-2);
+    }
+
+    .step-duration {
+      font-size: 11px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      color: var(--ghost);
+      padding: 8px 16px;
+      border: 1px solid var(--border);
+      display: inline-block;
+    }
+
+    @media (max-width: 700px) {
+      .step { grid-template-columns: 1fr; gap: 16px; }
+      .step-roman { font-size: 56px; }
+    }
+
+    /* ─── SECTION 4: DELIVERABLES ────────────────────────────────────────────── */
+    .deliv-header {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: end;
+      margin-bottom: 72px;
+    }
+
+    .deliv-h2 {
+      font-size: clamp(32px, 3.8vw, 52px);
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .deliv-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .deliv-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--border);
+      border: 1px solid var(--border);
+    }
+
+    .deliv-card {
+      background: var(--surface);
+      padding: 52px 48px;
+      position: relative;
+      transition: background .25s;
+    }
+
+    .deliv-card:hover { background: var(--surface-2); }
+
+    .deliv-card::before {
+      content: '';
+      display: block;
+      width: 28px;
+      height: 1.5px;
+      background: var(--gold);
+      opacity: .7;
+      margin-bottom: 28px;
+    }
+
+    .deliv-card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .deliv-card p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.72;
+    }
+
+    .deliv-not {
+      margin-top: 48px;
+      padding: 36px 48px;
+      border: 1px solid var(--border);
+      display: flex;
+      align-items: center;
+      gap: 48px;
+      flex-wrap: wrap;
+    }
+
+    .deliv-not-label {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--ghost);
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+
+    .deliv-not-items {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .deliv-not-item {
+      font-size: 12.5px;
+      color: var(--ghost);
+      padding: 6px 14px;
+      border: 1px solid var(--border);
+      text-decoration: line-through;
+      text-decoration-color: rgba(255,255,255,.14);
+    }
+
+    @media (max-width: 860px) {
+      .deliv-header { grid-template-columns: 1fr; gap: 32px; }
+      .deliv-grid { grid-template-columns: 1fr; }
+      .deliv-card { padding: 36px 28px; }
+      .deliv-not { padding: 24px 28px; gap: 20px; }
+    }
+
+    /* ─── SECTION 5: WHO ─────────────────────────────────────────────────────── */
+    .who-intro {
+      max-width: 620px;
+      margin-bottom: 72px;
+    }
+
+    .who-h2 {
+      font-size: clamp(32px, 3.8vw, 52px);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 20px;
+    }
+
+    .who-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+    }
+
+    .who-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+
+    .who-card {
+      padding: 40px 36px 44px;
+      border: 1px solid var(--border);
+      transition: border-color .3s, background .3s;
+    }
+
+    .who-card:hover {
+      border-color: var(--gold-dim);
+      background: var(--gold-faint);
+    }
+
+    .who-icon {
+      width: 36px;
+      height: 36px;
+      border: 1px solid var(--gold-dim);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 22px;
+    }
+
+    .who-icon svg {
+      width: 16px;
+      height: 16px;
+      stroke: var(--gold);
+      fill: none;
+      stroke-width: 1.5;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+
+    .who-card-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .who-card p {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .who-roles {
+      padding: 44px 48px;
+      border: 1px solid var(--border);
+      background: var(--surface);
+    }
+
+    .who-roles-label {
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: .25em;
+      text-transform: uppercase;
+      color: var(--ghost);
+      margin-bottom: 28px;
+      display: block;
+    }
+
+    .roles {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .role {
+      font-size: 12.5px;
+      font-weight: 400;
+      color: var(--muted);
+      padding: 7px 16px;
+      border: 1px solid var(--border-2);
+      letter-spacing: .02em;
+    }
+
+    @media (max-width: 860px) {
+      .who-grid { grid-template-columns: 1fr; gap: 20px; }
+      .who-roles { padding: 28px; }
+    }
+
+    /* ─── SECTION 6: REGULATORY ──────────────────────────────────────────────── */
+    .reg-intro {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 100px;
+      align-items: start;
+      margin-bottom: 80px;
+    }
+
+    .reg-h2 {
+      font-size: clamp(32px, 3.8vw, 52px);
+      font-weight: 500;
+      color: var(--white);
+    }
+
+    .reg-sub {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.8;
+      padding-top: 8px;
+    }
+
+    .reg-row {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 72px;
+      padding: 52px 0;
+      border-bottom: 1px solid var(--border);
+      align-items: start;
+    }
+
+    .reg-row:first-of-type { border-top: 1px solid var(--border); }
+
+    .reg-ref {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 22px;
+      font-weight: 500;
+      color: var(--gold);
+      letter-spacing: .01em;
+      line-height: 1.25;
+    }
+
+    .reg-detail-title {
+      font-family: 'Inter', sans-serif;
+      font-size: 12.5px;
+      font-weight: 600;
+      letter-spacing: .05em;
+      color: var(--cream);
+      margin-bottom: 10px;
+    }
+
+    .reg-detail p {
+      font-size: 14px;
+      color: var(--muted);
+      line-height: 1.75;
+    }
+
+    @media (max-width: 860px) {
+      .reg-intro { grid-template-columns: 1fr; gap: 40px; }
+      .reg-row { grid-template-columns: 1fr; gap: 12px; }
+    }
+
+    /* ─── FINAL CTA ──────────────────────────────────────────────────────────── */
+    #cta {
+      padding: 180px 0;
+      border-bottom: none;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #cta::before {
+      content: '';
+      position: absolute;
+      bottom: -20%;
+      right: -10%;
+      width: 60%;
+      height: 80%;
+      background: radial-gradient(ellipse at 70% 70%, rgba(32,96,232,.045) 0%, transparent 60%);
+      pointer-events: none;
+    }
+
+    .cta-inner {
+      text-align: center;
+      max-width: 840px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 1;
+    }
+
+    .cta-h2 {
+      font-size: clamp(36px, 5.5vw, 72px);
+      font-weight: 400;
+      color: var(--white);
+      line-height: 1.07;
+      margin-bottom: 14px;
+    }
+
+    .cta-h2 em {
+      font-style: italic;
+      color: var(--gold);
+    }
+
+    .cta-sub {
+      font-size: 16px;
+      color: var(--muted);
+      line-height: 1.72;
+      max-width: 560px;
+      margin: 0 auto 56px;
+    }
+
+    .cta-meta {
+      margin-top: 28px;
+      font-size: 11px;
+      color: var(--ghost);
+      letter-spacing: .08em;
+    }
+
+    /* ─── FOOTER ─────────────────────────────────────────────────────────────── */
+    footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-brand-name {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 20px;
+      font-weight: 600;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: var(--cream);
+      display: block;
+    }
+
+    .footer-brand-sub {
+      font-size: 9px;
+      font-weight: 400;
+      letter-spacing: .22em;
+      text-transform: uppercase;
+      color: var(--gold);
+      display: block;
+      margin-top: 3px;
+    }
+
+    .footer-right p {
+      font-size: 11.5px;
+      color: var(--ghost);
+      letter-spacing: .04em;
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      footer { text-align: center; }
+      .footer-right p { text-align: center; }
+    }
+
+    /* ─── SCROLL REVEAL ──────────────────────────────────────────────────────── */
+    .r {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1);
+    }
+
+    .r.in { opacity: 1; transform: none; }
+
+    .r-d1 { transition-delay: .08s; }
+    .r-d2 { transition-delay: .18s; }
+    .r-d3 { transition-delay: .28s; }
+    .r-d4 { transition-delay: .36s; }
+
+    /* ─── DUAL CTA ───────────────────────────────────────────────────────────── */
+    .cta-pair {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      flex-wrap: wrap;
+    }
+
+    .cta-microcopy {
+      margin-top: 14px;
+      font-size: 12px;
+      color: var(--ghost);
+      letter-spacing: .03em;
+    }
+
+    .cta-microcopy a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-decoration-color: var(--gold-dim);
+      text-underline-offset: 3px;
+    }
+
+    .cta-microcopy a:hover { text-decoration-color: var(--gold); }
+
+    /* ─── FOUNDER BLOCK ──────────────────────────────────────────────────────── */
+    .founder-block {
+      max-width: 600px;
+      margin: 0 auto 64px;
+      padding: 0 24px;
+      text-align: center;
+    }
+
+    .founder-block p {
+      font-size: 15px;
+      color: var(--muted);
+      line-height: 1.82;
+      font-style: italic;
+    }
+
+    .founder-sig {
+      display: block;
+      margin-top: 20px;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 19px;
+      font-weight: 500;
+      font-style: normal;
+      color: var(--cream);
+      letter-spacing: .02em;
+    }
+
+    /* hide secondary nav button on small screens */
+    @media (max-width: 640px) { .nav-ask { display: none; } }
+
+    /* ─── LOGO ───────────────────────────────────────────────────────────────── */
+    .nav-logo-img {
+      display: block;
+      height: 38px;
+      width: auto;
+    }
+
+    .footer-logo-img {
+      display: block;
+      height: 44px;
+      width: auto;
+    }
+
+    /* ─── FAQ SECTION ────────────────────────────────────────────────────────── */
+    .faq-item {
+      padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .faq-item:first-of-type { border-top: 1px solid var(--border); }
+
+    .faq-q {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(18px, 2vw, 22px);
+      font-weight: 500;
+      color: var(--cream);
+      margin-bottom: 12px;
+    }
+
+    .faq-a {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.78;
+      max-width: 720px;
+    }
+  </style>
+
+  <!-- Structured Data: Organization -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Organization",
+    "name": "Giggle AI Innovation",
+    "url": "https://giggleaiinnovation.com",
+    "founder": {
+      "@type": "Person",
+      "name": "Thokozile Phiri"
+    },
+    "description": "Giggle AI Innovation builds AI decision control infrastructure for regulated healthcare organisations. Its flagship system, GAMM, installs a control layer over AI-driven decisions in production — making decisions visible, owned, and interruptible.",
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "GAMM — AI Decision Control Operating System",
+      "description": "GAMM is an AI Decision Control Operating System that installs a structured control layer over healthcare AI decisions in production. It defines Decision Objects, assigns ownership, and establishes Control Points to satisfy EU AI Act Article 14 human oversight and MDR user intervention requirements.",
+      "url": "https://giggleaiinnovation.com"
+    }
+  }
+  </script>
+
+  <!-- Structured Data: FAQ -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    "mainEntity": [
+      {
+        "@type": "Question",
+        "name": "What is GAMM?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GAMM is an AI Decision Control Operating System by Giggle AI Innovation. It installs a control layer over AI-driven decisions in production, making decisions visible, owned, and interruptible. It is not a self-serve SaaS platform — it is delivered through a guided diagnostic and installation process."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "What is AI decision control?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "AI decision control is the ability to identify AI-driven decisions in production, assign clear ownership, define intervention points, and ensure decisions can be reviewed, escalated, or overridden when needed. It is distinct from AI compliance, which documents how a system was built rather than how its decisions are governed in production."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Is GAMM a SaaS platform?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GAMM is not a self-serve SaaS platform. It is an operator-led decision control system delivered through three phases: an Exposure Scan, a GAMM Diagnostic, and a control layer Installation. It is designed for healthcare AI organisations operating under regulatory pressure, not for general-purpose AI monitoring."
+        }
+      },
+      {
+        "@type": "Question",
+        "name": "Who is GAMM for?",
+        "acceptedAnswer": {
+          "@type": "Answer",
+          "text": "GAMM is built first for healthcare AI organisations, including developers and operators of SaMD, clinical decision support systems, imaging AI, and other regulated AI systems operating under EU AI Act and MDR requirements. It is relevant to CTOs, Heads of AI, clinical AI leads, and regulatory affairs teams."
+        }
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+
+<!-- ═══ NAV ════════════════════════════════════════════════════════════════════ -->
+<nav id="nav">
+  <div class="wrap">
+    <div class="nav-flex">
+      <a href="/" aria-label="GAMM by Giggle AI Innovation — Home">
+        <img src="asset/GAMM-logo-trans.png" alt="GAMM by Giggle AI Innovation" class="nav-logo-img">
+      </a>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <a href="mailto:info@giggleaiinnovation.com?subject=GAMM%20-%20Decision%20Control%20Question" class="btn btn-outline nav-ask">Ask a Question</a>
+        <a href="https://calendly.com/thokozile/ai-decision-system-diagnostic-intro-call" target="_blank" rel="noopener" class="btn btn-gold">Request Guided Assessment</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════════════ -->
+<section id="hero">
+  <div class="wrap">
+    <div class="hero-inner">
+      <p class="eyebrow">AI Decision Control Operating System</p>
+      <h1 class="hero-h1">
+        Your AI is compliant.<br>
+        <em>That is not the same<br>as controlled.</em>
+      </h1>
+      <p class="hero-sub">
+        Healthcare AI systems that pass audits still make decisions nobody owns.
+        GAMM installs a control layer over AI-driven decisions in production —
+        making every decision visible, owned, and interruptible.
+      </p>
+      <div class="hero-actions">
+        <div class="cta-pair">
+          <a href="https://calendly.com/thokozile/ai-decision-system-diagnostic-intro-call" target="_blank" rel="noopener" class="btn btn-gold">Request Guided Assessment</a>
+          <a href="mailto:info@giggleaiinnovation.com?subject=GAMM%20-%20Decision%20Control%20Question" class="btn btn-outline">Ask a Question</a>
+        </div>
+        <p class="cta-microcopy">Not sure if this applies to your system? <a href="mailto:info@giggleaiinnovation.com?subject=GAMM%20-%20Decision%20Control%20Question">Send a message first.</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="hero-watermark" aria-hidden="true">GAMM</div>
+</section>
+
+
+<!-- ═══ TICKER ══════════════════════════════════════════════════════════════════ -->
+<div class="ticker-wrap" aria-hidden="true">
+  <div class="ticker-track">
+    <!-- duplicated for seamless loop -->
+    <span class="ticker-item">Decision Visibility <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Ownership Assignment <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Control Points <span class="ticker-dot"></span></span>
+    <span class="ticker-item">EU AI Act Article 14 <span class="ticker-dot"></span></span>
+    <span class="ticker-item">MDR GSPR 14.2(d) <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Decision Registry <span class="ticker-dot"></span></span>
+    <span class="ticker-item">GAMM Control Index <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Human Oversight <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Post-Market Surveillance <span class="ticker-dot"></span></span>
+    <span class="ticker-item">SaMD Control <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Decision Visibility <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Ownership Assignment <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Control Points <span class="ticker-dot"></span></span>
+    <span class="ticker-item">EU AI Act Article 14 <span class="ticker-dot"></span></span>
+    <span class="ticker-item">MDR GSPR 14.2(d) <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Decision Registry <span class="ticker-dot"></span></span>
+    <span class="ticker-item">GAMM Control Index <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Human Oversight <span class="ticker-dot"></span></span>
+    <span class="ticker-item">Post-Market Surveillance <span class="ticker-dot"></span></span>
+    <span class="ticker-item">SaMD Control <span class="ticker-dot"></span></span>
+  </div>
+</div>
+
+
+<!-- ═══ THE PROBLEM ════════════════════════════════════════════════════════════ -->
+<section class="section" id="problem">
+  <div class="wrap">
+    <p class="sec-label">01 &mdash; The Problem</p>
+    <div class="problem-grid">
+
+      <div class="problem-body r">
+        <h2 class="problem-h2">Compliance proves you documented.<br>It does not prove you control.</h2>
+        <p>Most healthcare AI organisations have invested heavily in compliance. Audit trails, model cards, validation studies, regulatory submissions. They can demonstrate their systems were built correctly.</p>
+        <p>What they cannot demonstrate is control over the decisions those systems are making right now — in production, on live patient pathways, in real time.</p>
+        <p>The gap between compliance and control is where clinical and regulatory risk accumulates. Quietly. Systematically. Until it doesn't.</p>
+      </div>
+
+      <div class="problem-list r r-d1">
+        <div class="problem-item">
+          <p class="problem-item-title">No one owns the decision</p>
+          <p>AI recommendations pass through clinical workflows with no assigned accountability. When outcomes diverge, ownership is contested. Investigations go nowhere.</p>
+        </div>
+        <div class="problem-item">
+          <p class="problem-item-title">No mechanism to interrupt</p>
+          <p>Systems operating in production have no defined override pathway. Human oversight exists on paper. In practice, the AI operates without effective control points.</p>
+        </div>
+        <div class="problem-item">
+          <p class="problem-item-title">Decisions are invisible at the point of consequence</p>
+          <p>Logging captures outputs. It does not capture the decision — who was in the loop, what context applied, what authority was exercised.</p>
+        </div>
+        <div class="problem-item">
+          <p class="problem-item-title">EU AI Act changes the exposure</p>
+          <p>Article 14 requires demonstrable human oversight — not nominal oversight. Organisations that cannot show control, not merely compliance, face material regulatory risk.</p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WHAT GAMM IS ═══════════════════════════════════════════════════════════ -->
+<section class="section section--surface" id="what">
+  <div class="wrap">
+    <p class="sec-label">02 &mdash; What GAMM Is</p>
+
+    <div class="what-intro">
+      <h2 class="what-h2 r">
+        Not a tool.<br>
+        Not a framework.<br>
+        A Decision Operating System.
+      </h2>
+      <div class="what-body r r-d1">
+        <p>GAMM installs a structured control layer over the AI decisions your organisation makes in production. It does not replace your systems. It gives those systems the architecture they are currently missing.</p>
+        <p>The absence of that architecture is not a compliance gap. It is a control gap. The two are different problems with different solutions.</p>
+        <div class="not-tags">
+          <span class="not-tag">Not a self-serve dashboard</span>
+          <span class="not-tag">Not a compliance checklist</span>
+          <span class="not-tag">Not an audit exercise</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="pillars">
+      <div class="pillar r">
+        <span class="pillar-n">01</span>
+        <p class="pillar-title">Decision Objects</p>
+        <p>Every consequential AI output is formalised as a discrete Decision Object: a defined artefact with inputs, rationale, context, and consequence. Not a log entry. A decision.</p>
+      </div>
+      <div class="pillar r r-d1">
+        <span class="pillar-n">02</span>
+        <p class="pillar-title">Ownership</p>
+        <p>Each Decision Object is assigned to a named human authority. Ownership means accountability is not distributed into ambiguity — it is explicit, documented, and auditable.</p>
+      </div>
+      <div class="pillar r r-d2">
+        <span class="pillar-n">03</span>
+        <p class="pillar-title">Control Points</p>
+        <p>Defined intervention gates at which a human authority can review, modify, or override an AI decision. Not aspirational oversight. Structural interruption capability.</p>
+      </div>
+    </div>
+
+    <div class="gamm-principle r">
+      <span class="gamm-principle-label">The GAMM Principle</span>
+      <blockquote>
+        A healthcare AI system under GAMM does not merely produce outputs.<br>
+        It produces decisions — with visibility, ownership, and the structural capacity for human control.<br>
+        That is what regulators mean by oversight. That is what boards should be demanding.
+      </blockquote>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ HOW IT WORKS ═══════════════════════════════════════════════════════════ -->
+<section class="section" id="how">
+  <div class="wrap">
+    <p class="sec-label">03 &mdash; How It Works</p>
+
+    <div class="steps-header r">
+      <h2 class="steps-h2">Three phases.<br>One outcome: control.</h2>
+      <p class="steps-sub">Each phase is scoped, fixed in time, and ends with a defined output — not an ongoing engagement.</p>
+    </div>
+
+    <div class="step r">
+      <div class="step-roman" aria-hidden="true">I</div>
+      <div>
+        <span class="step-phase">Phase One</span>
+        <h3 class="step-name serif">Exposure Scan</h3>
+        <p class="step-desc">A structured diagnostic of your current AI deployment to identify where decisions are being made without ownership, visibility, or control. We map your live decision surface — the gap between what your documentation says and what your systems are doing.</p>
+        <p class="step-note">No prior preparation required. No system changes. An independent read of your actual control state.</p>
+        <span class="step-duration">3–5 days</span>
+      </div>
+    </div>
+
+    <div class="step r">
+      <div class="step-roman" aria-hidden="true">II</div>
+      <div>
+        <span class="step-phase">Phase Two</span>
+        <h3 class="step-name serif">GAMM Diagnostic</h3>
+        <p class="step-desc">A deep engagement with your AI decision infrastructure. We work with your CTO, Head of AI, and clinical leadership to define the Decision Registry, assign ownership, establish Control Points, and produce your GAMM Control Index — a scored, auditable picture of your control state.</p>
+        <p class="step-note">Fixed scope. No open-ended retainer. Pricing discussed on the Guided Assessment call.</p>
+        <span class="step-duration">2–4 weeks</span>
+      </div>
+    </div>
+
+    <div class="step r">
+      <div class="step-roman" aria-hidden="true">III</div>
+      <div>
+        <span class="step-phase">Phase Three</span>
+        <h3 class="step-name serif">Installation</h3>
+        <p class="step-desc">The control layer is put in place. Decision Objects are formalised. Ownership is assigned. Control Points are operational. Your organisation moves from nominal oversight to structural control — documented, defensible, and ready for regulatory scrutiny.</p>
+        <p class="step-note">This is not a handover document. It is a working system.</p>
+        <span class="step-duration">Timeline defined at Diagnostic close</span>
+      </div>
+    </div>
+
+    <div class="mid-cta r" style="margin-top:72px; display:flex; align-items:center; justify-content:space-between; flex-wrap:wrap; gap:24px; padding:44px 48px; border:1px solid var(--border); background:var(--surface);">
+      <div>
+        <p style="font-size:13px; font-weight:500; letter-spacing:.06em; color:var(--cream); margin-bottom:6px;">Ready to establish your control state?</p>
+        <p style="font-size:13px; color:var(--muted);">The Guided Assessment call takes 45 minutes. No preparation required.</p>
+      </div>
+      <div style="display:flex; flex-direction:column; align-items:flex-end; gap:10px; flex-shrink:0;">
+        <div class="cta-pair" style="justify-content:flex-end;">
+          <a href="mailto:info@giggleaiinnovation.com?subject=GAMM%20-%20Decision%20Control%20Question" class="btn btn-outline">Ask a Question</a>
+          <a href="https://calendly.com/thokozile/ai-decision-system-diagnostic-intro-call" target="_blank" rel="noopener" class="btn btn-gold" style="white-space:nowrap;">Request Guided Assessment</a>
+        </div>
+        <p class="cta-microcopy" style="text-align:right;">Not sure if this applies? <a href="mailto:info@giggleaiinnovation.com?subject=GAMM%20-%20Decision%20Control%20Question">Send a message first.</a></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ WHAT YOU LEAVE WITH ════════════════════════════════════════════════════ -->
+<section class="section section--surface" id="deliverables">
+  <div class="wrap">
+    <p class="sec-label">04 &mdash; What You Leave With</p>
+
+    <div class="deliv-header">
+      <h2 class="deliv-h2 r">A working control system.<br>Not a report.</h2>
+      <p class="deliv-sub r r-d1">Every engagement ends with operational infrastructure — artefacts that are live, assigned, and functioning. Not recommendations waiting to be prioritised. Not a roadmap for a future quarter.</p>
+    </div>
+
+    <div class="deliv-grid">
+      <div class="deliv-card r">
+        <p class="deliv-card-title">Decision Registry</p>
+        <p>A complete, structured record of every consequential AI decision in your production environment — defined, categorised, and documented to regulatory standard.</p>
+      </div>
+      <div class="deliv-card r r-d1">
+        <p class="deliv-card-title">Ownership Assignment</p>
+        <p>Named human authority attached to each decision category. Clear accountability that survives personnel changes, audits, and incident investigations.</p>
+      </div>
+      <div class="deliv-card r r-d2">
+        <p class="deliv-card-title">Control Points</p>
+        <p>Defined, operational override and intervention gates. Human oversight that is structural, not aspirational. Article 14-ready from day one.</p>
+      </div>
+      <div class="deliv-card r r-d3">
+        <p class="deliv-card-title">GAMM Control Index</p>
+        <p>A scored, auditable assessment of your organisation's control state across all active AI decision surfaces. A baseline. A benchmark. A board-level instrument.</p>
+      </div>
+    </div>
+
+    <div class="deliv-not r">
+      <span class="deliv-not-label">Not this</span>
+      <div class="deliv-not-items">
+        <span class="deliv-not-item">Slide deck recommendations</span>
+        <span class="deliv-not-item">Gap analysis report</span>
+        <span class="deliv-not-item">Roadmap document</span>
+        <span class="deliv-not-item">Best-practice framework</span>
+        <span class="deliv-not-item">Vendor assessment</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ WHO THIS IS FOR ════════════════════════════════════════════════════════ -->
+<section class="section" id="who">
+  <div class="wrap">
+    <p class="sec-label">05 &mdash; Who This Is For</p>
+
+    <div class="who-intro r">
+      <h2 class="who-h2">Built first for<br>regulated healthcare AI.</h2>
+      <p class="who-sub">GAMM is not a general AI governance engagement. It is a precision instrument for organisations where AI decisions carry clinical and regulatory consequence.</p>
+    </div>
+
+    <div class="who-grid">
+      <div class="who-card r">
+        <div class="who-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="3" width="18" height="18" rx="2"/>
+            <path d="M12 8v8M8 12h8"/>
+          </svg>
+        </div>
+        <p class="who-card-title">SaMD &amp; Clinical AI</p>
+        <p>Software as a Medical Device where AI output influences clinical decision-making. Imaging, triage, diagnostic support, treatment recommendation systems operating in regulated environments.</p>
+      </div>
+      <div class="who-card r r-d1">
+        <div class="who-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+          </svg>
+        </div>
+        <p class="who-card-title">EU AI Act High-Risk</p>
+        <p>Organisations operating AI systems classified as high-risk under Annex III. Where Article 14 compliance is mandatory and human oversight must be demonstrable — not asserted.</p>
+      </div>
+      <div class="who-card r r-d2">
+        <div class="who-icon">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M22 12h-4l-3 9L9 3l-3 9H2"/>
+          </svg>
+        </div>
+        <p class="who-card-title">Regulated Health Systems</p>
+        <p>Health systems, hospital groups, and digital health organisations deploying AI in care pathways where clinical and regulatory accountability cannot be delegated to a vendor.</p>
+      </div>
+    </div>
+
+    <div class="who-roles r">
+      <span class="who-roles-label">This engagement is led by</span>
+      <div class="roles">
+        <span class="role">CTO</span>
+        <span class="role">Head of AI</span>
+        <span class="role">Head of Product (AI)</span>
+        <span class="role">Chief Medical Officer</span>
+        <span class="role">Clinical AI Lead</span>
+        <span class="role">Head of Regulatory Affairs</span>
+        <span class="role">Chief Risk Officer</span>
+        <span class="role">General Counsel</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ REGULATORY ALIGNMENT ═══════════════════════════════════════════════════ -->
+<section class="section section--surface" id="regulatory">
+  <div class="wrap">
+    <p class="sec-label">06 &mdash; Regulatory Alignment</p>
+
+    <div class="reg-intro">
+      <h2 class="reg-h2 r">Built around what regulators are actually requiring.</h2>
+      <p class="reg-sub r r-d1">Not interpreted from guidance. Not extrapolated from general compliance practice. GAMM addresses the specific control requirements that healthcare AI organisations face under current and incoming regulation.</p>
+    </div>
+
+    <div class="reg-row r">
+      <div class="reg-ref">EU AI Act<br>Article 14</div>
+      <div class="reg-detail">
+        <p class="reg-detail-title">Human Oversight</p>
+        <p>Article 14 requires that high-risk AI systems are designed and deployed to allow natural persons to effectively oversee them during the period of use. GAMM's Control Points architecture directly operationalises this requirement — creating structural human oversight capability, not policy-level documentation of intent.</p>
+      </div>
+    </div>
+
+    <div class="reg-row r">
+      <div class="reg-ref">MDR<br>GSPR 14.2(d)</div>
+      <div class="reg-detail">
+        <p class="reg-detail-title">User Intervention Expectations</p>
+        <p>GSPR 14.2(d) expects that SaMD supports user intervention in automated processes. GAMM's control layer generates structured evidence that intervention pathways are defined, assigned, and documented — supporting the demonstration of user override capability expected during conformity assessment. Organisations should seek independent legal review of specific compliance claims.</p>
+      </div>
+    </div>
+
+    <div class="reg-row r">
+      <div class="reg-ref">Post-Market<br>Surveillance</div>
+      <div class="reg-detail">
+        <p class="reg-detail-title">Ongoing Decision Monitoring</p>
+        <p>GAMM's Decision Registry provides the structured decision data necessary for meaningful post-market surveillance. Rather than aggregating system outputs, organisations hold a discrete record of AI decisions — with context, ownership, and consequence — that satisfies the intent of PMS requirements and withstands notified body scrutiny.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ FINAL CTA ══════════════════════════════════════════════════════════════ -->
+<section id="cta" class="section" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="cta-inner">
+      <p class="sec-label" style="justify-content:center; margin-bottom:52px;">Request a Guided Assessment</p>
+      <h2 class="cta-h2 r">
+        Compliance does not<br>guarantee control.<br>
+        <em>GAMM creates it.</em>
+      </h2>
+      <p class="cta-sub r r-d1">
+        A Guided Assessment establishes whether GAMM is the right engagement for your organisation — and what your current control exposure looks like.
+      </p>
+
+      <div class="founder-block r r-d2">
+        <p>I work directly with teams running this diagnostic. If you're deploying AI in a regulated healthcare environment and want to understand where decision control may be breaking, reach out directly.</p>
+        <span class="founder-sig">— Thokozile Phiri, Founder</span>
+      </div>
+
+      <div class="cta-pair r r-d3" style="justify-content:center;">
+        <a href="mailto:info@giggleaiinnovation.com?subject=GAMM%20-%20Decision%20Control%20Question" class="btn btn-outline">Ask a Question</a>
+        <a href="https://calendly.com/thokozile/ai-decision-system-diagnostic-intro-call" target="_blank" rel="noopener" class="btn btn-gold">Request Guided Assessment</a>
+      </div>
+      <p class="cta-microcopy r r-d4" style="text-align:center;">No preparation required. No commitment beyond the conversation.</p>
+      <p class="cta-meta r" style="margin-top:20px;">GAMM Diagnostic &nbsp;&bull;&nbsp; 2–4 weeks &nbsp;&bull;&nbsp; Fixed scope &nbsp;&bull;&nbsp; No retainer</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ FAQ ════════════════════════════════════════════════════════════════════ -->
+<section class="section section--surface" id="faq" aria-label="Frequently asked questions">
+  <div class="wrap">
+    <p class="sec-label">Questions</p>
+
+    <div class="faq-item r">
+      <h3 class="faq-q">What is GAMM?</h3>
+      <p class="faq-a">GAMM is an AI Decision Control Operating System by Giggle AI Innovation. It installs a control layer over AI-driven decisions in production, making decisions visible, owned, and interruptible. It is not a self-serve dashboard — it is delivered through a guided assessment, diagnostic, and installation process.</p>
+    </div>
+
+    <div class="faq-item r">
+      <h3 class="faq-q">What is AI decision control?</h3>
+      <p class="faq-a">AI decision control is the ability to identify AI-driven decisions in production, assign clear ownership to each, define intervention points, and ensure decisions can be reviewed, escalated, or overridden when needed. It is distinct from AI compliance, which documents how a system was built — not how its decisions are governed once deployed.</p>
+    </div>
+
+    <div class="faq-item r">
+      <h3 class="faq-q">Is GAMM a SaaS platform?</h3>
+      <p class="faq-a">GAMM is not a self-serve SaaS platform. It is an operator-led decision control system delivered in three phases: an Exposure Scan, a GAMM Diagnostic, and a control layer Installation. It is designed for regulated healthcare AI organisations, not for general-purpose AI monitoring.</p>
+    </div>
+
+    <div class="faq-item r">
+      <h3 class="faq-q">Who is GAMM for?</h3>
+      <p class="faq-a">GAMM is built first for healthcare AI organisations — developers and operators of SaMD, clinical decision support systems, imaging AI, and other regulated AI systems operating under EU AI Act and MDR requirements. It is led by CTOs, Heads of AI, clinical AI leads, and regulatory affairs teams.</p>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ═══ FOOTER ══════════════════════════════════════════════════════════════════ -->
+<footer>
+  <div class="wrap">
+    <div class="footer-flex">
+      <div>
+        <img src="asset/GAMM-logo-trans.png" alt="GAMM by Giggle AI Innovation" class="footer-logo-img">
+      </div>
+      <div class="footer-right">
+        <p>AI Decision Control Operating System</p>
+        <p style="margin-top:5px;">&copy; 2026 Giggle AI Innovation. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<script>
+  // ── Scroll reveal
+  const els = document.querySelectorAll('.r');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('in');
+        io.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.08, rootMargin: '0px 0px -32px 0px' });
+  els.forEach(el => io.observe(el));
+
+  // ── Nav scroll state
+  const nav = document.getElementById('nav');
+  const onScroll = () => {
+    nav.classList.toggle('scrolled', window.scrollY > 64);
+  };
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  // ── Smooth scroll
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const t = document.querySelector(a.getAttribute('href'));
+      if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+    });
+  });
+</script>
+
+</body>
+</html>
