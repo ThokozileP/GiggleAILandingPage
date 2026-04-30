@@ -1692,7 +1692,7 @@
     logos.forEach(el => { if (el) el.src = light ? LIGHT_LOGO : DARK_LOGO; });
   }
 
-  applyTheme(localStorage.getItem('gammTheme') === 'light');
+  applyTheme(localStorage.getItem('gammTheme') !== 'dark');
 
   themeToggle.addEventListener('click', () => {
     const isLight = html.getAttribute('data-theme') === 'light';
