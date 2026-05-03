@@ -1139,10 +1139,261 @@
   }
   .theme-toggle:hover { border-color: var(--gold-dim); color: var(--gold); }
   .theme-toggle svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+  .social-link {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: transparent; border: 1px solid var(--border-2);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--muted); transition: border-color .2s, color .2s; flex-shrink: 0;
+  }
+  .social-link:hover { border-color: var(--gold-dim); color: var(--gold); }
+  .social-link svg { width: 15px; height: 15px; fill: currentColor; }
   .icon-moon { display: none; }
   .icon-sun  { display: block; }
   [data-theme="light"] .icon-moon { display: block; }
   [data-theme="light"] .icon-sun  { display: none; }
+
+  /* ─── COOKIE CONSENT ────────────────────────────────────────────────────── */
+  #cookie-banner {
+    position: fixed;
+    bottom: 0; left: 0; right: 0;
+    z-index: 9999;
+    background: var(--surface-2);
+    border-top: 1px solid var(--border-2);
+    padding: 22px 0;
+    transform: translateY(110%);
+    transition: transform .4s cubic-bezier(.4,0,.2,1);
+  }
+  #cookie-banner.cb-visible { transform: translateY(0); }
+
+  .cookie-banner-inner {
+    display: flex;
+    align-items: center;
+    gap: 36px;
+    justify-content: space-between;
+  }
+
+  .cookie-banner-text { flex: 1; min-width: 0; }
+
+  .cookie-banner-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+    margin-bottom: 7px;
+  }
+
+  .cookie-banner-links { font-size: 11px; color: var(--ghost); }
+
+  .cookie-banner-links a {
+    color: var(--gold);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    text-decoration-color: var(--gold-dim);
+    transition: text-decoration-color .2s;
+  }
+  .cookie-banner-links a:hover { text-decoration-color: var(--gold); }
+
+  .cookie-banner-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+    flex-wrap: wrap;
+  }
+
+  .btn-sm {
+    font-size: 10px;
+    padding: 10px 18px;
+  }
+
+  /* Modal overlay */
+  #cookie-modal-overlay {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    background: rgba(6,7,14,.8);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity .25s;
+  }
+  #cookie-modal-overlay.cm-visible {
+    opacity: 1;
+    pointer-events: all;
+  }
+
+  .cookie-modal {
+    background: var(--surface);
+    border: 1px solid var(--border-2);
+    max-width: 560px;
+    width: 100%;
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 48px 48px 40px;
+    position: relative;
+    box-shadow: 0 32px 80px rgba(0,0,0,.5);
+  }
+
+  .cookie-modal-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 28px);
+    font-weight: 500;
+    color: var(--white);
+    margin-bottom: 10px;
+    letter-spacing: -.01em;
+  }
+
+  .cookie-modal-intro {
+    font-size: 13.5px;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 4px;
+  }
+
+  .cookie-category {
+    padding: 20px 0;
+    border-top: 1px solid var(--border);
+  }
+
+  .cookie-cat-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    margin-bottom: 7px;
+  }
+
+  .cookie-cat-title {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: .1em;
+    text-transform: uppercase;
+    color: var(--cream);
+  }
+
+  .cookie-always-on {
+    font-size: 9.5px;
+    font-weight: 500;
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid var(--gold-dim);
+    padding: 3px 10px;
+    white-space: nowrap;
+  }
+
+  .cookie-cat-desc {
+    font-size: 13px;
+    color: var(--muted);
+    line-height: 1.65;
+  }
+
+  /* Toggle switch — sharp corners to match brand */
+  .c-toggle {
+    position: relative;
+    width: 44px;
+    height: 24px;
+    flex-shrink: 0;
+  }
+  .c-toggle input {
+    opacity: 0; width: 0; height: 0;
+    position: absolute;
+  }
+  .c-toggle-track {
+    position: absolute;
+    inset: 0;
+    background: var(--border-2);
+    cursor: pointer;
+    transition: background .2s;
+  }
+  .c-toggle input:checked + .c-toggle-track { background: var(--gold); }
+  .c-toggle-track::after {
+    content: '';
+    position: absolute;
+    width: 18px; height: 18px;
+    left: 3px; top: 3px;
+    background: #fff;
+    transition: transform .2s;
+  }
+  .c-toggle input:checked + .c-toggle-track::after { transform: translateX(20px); }
+  .c-toggle input:focus-visible + .c-toggle-track {
+    outline: 2px solid var(--gold);
+    outline-offset: 2px;
+  }
+
+  /* Modal footer */
+  .cookie-modal-footer {
+    margin-top: 28px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  .cookie-modal-footer-right {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* Modal close */
+  .cookie-modal-close {
+    position: absolute;
+    top: 14px; right: 14px;
+    width: 32px; height: 32px;
+    background: transparent;
+    border: 1px solid var(--border-2);
+    color: var(--muted);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: border-color .2s, color .2s;
+    padding: 0;
+  }
+  .cookie-modal-close svg {
+    stroke: currentColor; fill: none;
+    stroke-width: 1.5; stroke-linecap: round;
+  }
+  .cookie-modal-close:hover { border-color: var(--gold-dim); color: var(--gold); }
+
+  /* Cookie settings link in footer */
+  .cookie-settings-link {
+    font-size: 11px;
+    color: var(--ghost);
+    letter-spacing: .04em;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    cursor: pointer;
+    background: none; border: none;
+    padding: 0;
+    font-family: inherit;
+    transition: color .2s;
+  }
+  .cookie-settings-link:hover { color: var(--muted); }
+
+  .footer-legal {
+    margin-top: 8px;
+    display: flex;
+    gap: 18px;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+  @media (max-width: 600px) { .footer-legal { justify-content: center; } }
+
+  /* Responsive cookie banner */
+  @media (max-width: 700px) {
+    .cookie-banner-inner { flex-direction: column; align-items: flex-start; }
+    .cookie-banner-actions { width: 100%; }
+    .cookie-modal { padding: 36px 24px 28px; }
+    .cookie-modal-footer { flex-direction: column; align-items: stretch; }
+    .cookie-modal-footer-right { justify-content: stretch; }
+    .cookie-modal-footer .btn-sm { flex: 1; text-align: center; }
+  }
 
   </style>
 
@@ -1219,6 +1470,9 @@
         <img src="asset/GAMM-logo-trans.png" alt="GAMM by Giggle AI Innovation" class="nav-logo-img" id="navLogo">
       </a>
       <div style="display:flex; align-items:center; gap:12px;">
+        <a href="https://www.linkedin.com/company/giggle-ai-innovation" target="_blank" rel="noopener" class="social-link" aria-label="Giggle AI Innovation on LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
         <button id="themeToggle" class="theme-toggle" aria-label="Toggle colour theme">
           <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
@@ -1645,10 +1899,95 @@
       <div class="footer-right">
         <p>AI Decision Control Operating System</p>
         <p style="margin-top:5px;">&copy; 2026 Giggle AI Innovation. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy-policy.html" class="cookie-settings-link">Privacy Policy</a>
+          <a href="cookie-policy.html" class="cookie-settings-link">Cookie Policy</a>
+          <button id="cookie-settings-btn" class="cookie-settings-link">Cookie settings</button>
+        </div>
       </div>
     </div>
   </div>
 </footer>
+
+
+<!-- ═══ COOKIE BANNER ═══════════════════════════════════════════════════════ -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-describedby="cookie-banner-desc">
+  <div class="wrap">
+    <div class="cookie-banner-inner">
+      <div class="cookie-banner-text">
+        <p class="cookie-banner-desc" id="cookie-banner-desc">
+          We use cookies to make this website work, understand how visitors use it, and improve the GAMM experience. You can accept all cookies, reject non-essential cookies, or manage your preferences.
+        </p>
+        <p class="cookie-banner-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <span aria-hidden="true"> &nbsp;&middot;&nbsp; </span>
+          <a href="cookie-policy.html">Cookie Policy</a>
+        </p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button class="btn btn-sm btn-outline" id="cb-reject">Reject non-essential</button>
+        <button class="btn btn-sm btn-outline" id="cb-manage">Manage preferences</button>
+        <button class="btn btn-sm btn-gold" id="cb-accept">Accept all</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ═══ COOKIE PREFERENCES MODAL ════════════════════════════════════════════ -->
+<div id="cookie-modal-overlay" aria-hidden="true">
+  <div class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+
+    <button class="cookie-modal-close" id="cm-close" aria-label="Close cookie preferences">
+      <svg viewBox="0 0 24 24" width="14" height="14"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+
+    <h2 class="cookie-modal-title" id="cookie-modal-title">Cookie Preferences</h2>
+    <p class="cookie-modal-intro">Choose which cookies you allow. Strictly necessary cookies are always on — they keep the site working. All other categories are off by default.</p>
+
+    <!-- Strictly necessary -->
+    <div class="cookie-category">
+      <div class="cookie-cat-header">
+        <span class="cookie-cat-title">Strictly Necessary</span>
+        <span class="cookie-always-on" aria-label="Always enabled">Always on</span>
+      </div>
+      <p class="cookie-cat-desc">Required for the website to function. These cannot be turned off. They include your theme preference and cookie consent choice.</p>
+    </div>
+
+    <!-- Analytics -->
+    <div class="cookie-category">
+      <div class="cookie-cat-header">
+        <span class="cookie-cat-title">Analytics</span>
+        <label class="c-toggle">
+          <input type="checkbox" id="cm-analytics" aria-label="Analytics cookies">
+          <span class="c-toggle-track"></span>
+        </label>
+      </div>
+      <p class="cookie-cat-desc">Help us understand how visitors interact with the site — pages viewed, time spent, and entry sources. Used to improve content and experience. No personal data is shared with third parties.</p>
+    </div>
+
+    <!-- Marketing -->
+    <div class="cookie-category">
+      <div class="cookie-cat-header">
+        <span class="cookie-cat-title">Marketing</span>
+        <label class="c-toggle">
+          <input type="checkbox" id="cm-marketing" aria-label="Marketing cookies">
+          <span class="c-toggle-track"></span>
+        </label>
+      </div>
+      <p class="cookie-cat-desc">Allow us to measure the reach of content and outreach efforts. Only activated with explicit consent. No personal data is sold or shared for advertising purposes.</p>
+    </div>
+
+    <div class="cookie-modal-footer">
+      <button class="btn btn-sm btn-outline" id="cm-reject-all">Reject non-essential</button>
+      <div class="cookie-modal-footer-right">
+        <button class="btn btn-sm btn-outline" id="cm-save">Save preferences</button>
+        <button class="btn btn-sm btn-gold" id="cm-accept-all">Accept all</button>
+      </div>
+    </div>
+
+  </div>
+</div>
 
 
 <script>
@@ -1699,6 +2038,136 @@
     localStorage.setItem('gammTheme', isLight ? 'dark' : 'light');
     applyTheme(!isLight);
   });
+</script>
+
+<script>
+// ── Cookie Consent ────────────────────────────────────────────────────────────
+(function () {
+  var CONSENT_KEY = 'gamm_cookie_consent';
+  var CONSENT_VERSION = '1.0';
+
+  function getConsent() {
+    try {
+      var raw = localStorage.getItem(CONSENT_KEY);
+      if (!raw) return null;
+      var c = JSON.parse(raw);
+      return c.version === CONSENT_VERSION ? c : null;
+    } catch (e) { return null; }
+  }
+
+  function writeConsent(analytics, marketing) {
+    var c = {
+      necessary: true,
+      analytics: !!analytics,
+      marketing: !!marketing,
+      timestamp: new Date().toISOString(),
+      version: CONSENT_VERSION
+    };
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(c));
+    return c;
+  }
+
+  // ─ Script loaders ───────────────────────────────────────────────────────────
+  // To add Google Analytics 4, replace loadAnalytics() with:
+  //   var s = document.createElement('script');
+  //   s.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
+  //   s.async = true; document.head.appendChild(s);
+  //   window.dataLayer = window.dataLayer || [];
+  //   function gtag(){ dataLayer.push(arguments); }
+  //   gtag('js', new Date()); gtag('config', 'GA_MEASUREMENT_ID');
+  function loadAnalytics() { /* ANALYTICS_PLACEHOLDER */ }
+
+  // To add Meta Pixel or other marketing tags, replace loadMarketing() with
+  // the vendor's snippet.
+  function loadMarketing() { /* MARKETING_PLACEHOLDER */ }
+
+  function activateConsent(c) {
+    if (c.analytics) loadAnalytics();
+    if (c.marketing) loadMarketing();
+  }
+
+  // ─ DOM refs ─────────────────────────────────────────────────────────────────
+  var banner   = document.getElementById('cookie-banner');
+  var overlay  = document.getElementById('cookie-modal-overlay');
+  var cbAccept = document.getElementById('cb-accept');
+  var cbReject = document.getElementById('cb-reject');
+  var cbManage = document.getElementById('cb-manage');
+  var cmAccept = document.getElementById('cm-accept-all');
+  var cmReject = document.getElementById('cm-reject-all');
+  var cmSave   = document.getElementById('cm-save');
+  var cmClose  = document.getElementById('cm-close');
+  var cmAnalyt = document.getElementById('cm-analytics');
+  var cmMarket = document.getElementById('cm-marketing');
+  var settBtn  = document.getElementById('cookie-settings-btn');
+
+  // ─ Banner ───────────────────────────────────────────────────────────────────
+  function showBanner() { banner.classList.add('cb-visible'); }
+  function hideBanner() { banner.classList.remove('cb-visible'); }
+
+  // ─ Modal ────────────────────────────────────────────────────────────────────
+  function showModal() {
+    var c = getConsent();
+    cmAnalyt.checked = c ? c.analytics : false;
+    cmMarket.checked = c ? c.marketing : false;
+    overlay.classList.add('cm-visible');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    requestAnimationFrame(function () { cmClose.focus(); });
+  }
+
+  function hideModal() {
+    overlay.classList.remove('cm-visible');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  // ─ Actions ──────────────────────────────────────────────────────────────────
+  function acceptAll() {
+    activateConsent(writeConsent(true, true));
+    hideBanner(); hideModal();
+  }
+
+  function rejectAll() {
+    writeConsent(false, false);
+    hideBanner(); hideModal();
+  }
+
+  function savePrefs() {
+    activateConsent(writeConsent(cmAnalyt.checked, cmMarket.checked));
+    hideBanner(); hideModal();
+  }
+
+  // ─ Bindings ─────────────────────────────────────────────────────────────────
+  cbAccept.addEventListener('click', acceptAll);
+  cbReject.addEventListener('click', rejectAll);
+  cbManage.addEventListener('click', showModal);
+  cmAccept.addEventListener('click', acceptAll);
+  cmReject.addEventListener('click', rejectAll);
+  cmSave.addEventListener('click', savePrefs);
+  cmClose.addEventListener('click', hideModal);
+
+  overlay.addEventListener('click', function (e) {
+    if (e.target === overlay) hideModal();
+  });
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape' && overlay.classList.contains('cm-visible')) hideModal();
+  });
+
+  if (settBtn) {
+    settBtn.addEventListener('click', function (e) {
+      e.preventDefault(); showModal();
+    });
+  }
+
+  // ─ Init ─────────────────────────────────────────────────────────────────────
+  var existing = getConsent();
+  if (!existing) {
+    setTimeout(showBanner, 900);
+  } else {
+    activateConsent(existing);
+  }
+})();
 </script>
 
 </body>

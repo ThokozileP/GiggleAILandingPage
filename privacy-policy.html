@@ -1,0 +1,651 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Privacy Policy — Giggle AI Innovation and GAMM. How we handle your data under GDPR.">
+  <title>Privacy Policy | GAMM by Giggle AI Innovation</title>
+  <meta name="robots" content="noindex">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { font-size: 16px; scroll-behavior: smooth; }
+
+    :root {
+      --ink:        #06070E;
+      --bg:         #07080F;
+      --surface:    #0C0D18;
+      --surface-2:  #10121F;
+      --border:     #181B28;
+      --border-2:   #20243A;
+      --gold:       #2060E8;
+      --gold-dim:   rgba(32,96,232,.35);
+      --gold-faint: rgba(32,96,232,.07);
+      --cream:      #F2EEE6;
+      --muted:      #7A7770;
+      --ghost:      #383C50;
+      --white:      #FAFAF8;
+    }
+
+    [data-theme="light"] {
+      --bg:         #FFFFFF;
+      --surface:    #F5F6FA;
+      --surface-2:  #ECEEF5;
+      --border:     #E0E2EE;
+      --border-2:   #CDD0DF;
+      --cream:      #1A1C2A;
+      --muted:      #5A6275;
+      --ghost:      #6B748E;
+      --white:      #080A14;
+    }
+    [data-theme="light"] #policy-nav { background: rgba(255,255,255,.94); }
+
+    body {
+      background: var(--bg);
+      color: var(--cream);
+      font-family: 'Inter', system-ui, sans-serif;
+      font-weight: 300;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+    }
+
+    h1, h2, h3 {
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      line-height: 1.08;
+      letter-spacing: -0.015em;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    .wrap {
+      max-width: 1160px;
+      margin: 0 auto;
+      padding: 0 56px;
+    }
+    @media (max-width: 900px) { .wrap { padding: 0 32px; } }
+    @media (max-width: 600px) { .wrap { padding: 0 20px; } }
+
+    /* Nav */
+    #policy-nav {
+      position: fixed;
+      inset: 0 0 auto;
+      z-index: 200;
+      padding: 20px 0;
+      background: rgba(9,9,9,.88);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .nav-logo-img { display: block; height: 34px; width: auto; }
+
+    .btn {
+      display: inline-block;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      padding: 11px 24px;
+      cursor: pointer;
+      border: none;
+      transition: opacity .2s, transform .2s;
+    }
+    .btn:hover { opacity: .86; transform: translateY(-1px); }
+    .btn-outline {
+      background: transparent;
+      color: var(--gold);
+      border: 1px solid var(--gold-dim);
+    }
+
+    .theme-toggle {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: transparent; border: 1px solid var(--border-2);
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+      color: var(--muted); transition: border-color .2s, color .2s; flex-shrink: 0;
+    }
+    .theme-toggle:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .theme-toggle svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
+    .social-link {
+      width: 34px; height: 34px; border-radius: 50%;
+      background: transparent; border: 1px solid var(--border-2);
+      display: flex; align-items: center; justify-content: center;
+      color: var(--muted); transition: border-color .2s, color .2s; flex-shrink: 0;
+    }
+    .social-link:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .social-link svg { width: 15px; height: 15px; fill: currentColor; }
+    .icon-moon { display: none; }
+    .icon-sun  { display: block; }
+    [data-theme="light"] .icon-moon { display: block; }
+    [data-theme="light"] .icon-sun  { display: none; }
+
+    /* Content */
+    .policy-page {
+      padding: 140px 0 100px;
+      max-width: 760px;
+    }
+
+    .policy-eyebrow {
+      font-size: 10px;
+      font-weight: 500;
+      letter-spacing: .28em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 28px;
+    }
+
+    .policy-h1 {
+      font-size: clamp(36px, 5vw, 56px);
+      font-weight: 400;
+      color: var(--white);
+      margin-bottom: 12px;
+    }
+
+    .policy-meta {
+      font-size: 12px;
+      color: var(--ghost);
+      letter-spacing: .04em;
+      margin-bottom: 64px;
+    }
+
+    .policy-section {
+      margin-bottom: 52px;
+    }
+
+    .policy-h2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(20px, 2.4vw, 26px);
+      font-weight: 500;
+      color: var(--white);
+      margin-bottom: 14px;
+    }
+
+    .policy-body {
+      font-size: 14.5px;
+      color: var(--muted);
+      line-height: 1.82;
+    }
+
+    .policy-body p + p { margin-top: 14px; }
+
+    .policy-body ul {
+      margin: 14px 0 14px 20px;
+      list-style: disc;
+    }
+
+    .policy-body li { margin-bottom: 6px; }
+
+    .policy-body a {
+      color: var(--gold);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+      text-decoration-color: var(--gold-dim);
+      transition: text-decoration-color .2s;
+    }
+    .policy-body a:hover { text-decoration-color: var(--gold); }
+
+    .policy-divider {
+      border: none;
+      border-top: 1px solid var(--border);
+      margin: 52px 0;
+    }
+
+    /* Footer */
+    footer {
+      padding: 44px 0;
+      border-top: 1px solid var(--border);
+    }
+
+    .footer-flex {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 24px;
+    }
+
+    .footer-logo-img { display: block; height: 40px; width: auto; }
+
+    .footer-right p {
+      font-size: 11.5px;
+      color: var(--ghost);
+      letter-spacing: .04em;
+      text-align: right;
+    }
+
+    @media (max-width: 600px) {
+      footer { text-align: center; }
+      .footer-right p { text-align: center; }
+      .footer-legal { justify-content: center; }
+    }
+
+    .footer-legal {
+      margin-top: 8px;
+      display: flex;
+      gap: 18px;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+    }
+
+    /* Cookie consent — same as main site */
+    #cookie-banner {
+      position: fixed;
+      bottom: 0; left: 0; right: 0;
+      z-index: 9999;
+      background: var(--surface-2);
+      border-top: 1px solid var(--border-2);
+      padding: 22px 0;
+      transform: translateY(110%);
+      transition: transform .4s cubic-bezier(.4,0,.2,1);
+    }
+    #cookie-banner.cb-visible { transform: translateY(0); }
+
+    .cookie-banner-inner {
+      display: flex; align-items: center;
+      gap: 36px; justify-content: space-between;
+    }
+    .cookie-banner-text { flex: 1; min-width: 0; }
+    .cookie-banner-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 7px; }
+    .cookie-banner-links { font-size: 11px; color: var(--ghost); }
+    .cookie-banner-links a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--gold-dim); transition: text-decoration-color .2s; }
+    .cookie-banner-links a:hover { text-decoration-color: var(--gold); }
+    .cookie-banner-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; flex-wrap: wrap; }
+    .btn-sm { font-size: 10px; padding: 10px 18px; }
+    .btn-gold { background: var(--gold); color: #ffffff; }
+
+    #cookie-modal-overlay {
+      position: fixed; inset: 0; z-index: 10000;
+      background: rgba(6,7,14,.8);
+      display: flex; align-items: center; justify-content: center; padding: 24px;
+      opacity: 0; pointer-events: none; transition: opacity .25s;
+    }
+    #cookie-modal-overlay.cm-visible { opacity: 1; pointer-events: all; }
+    .cookie-modal {
+      background: var(--surface); border: 1px solid var(--border-2);
+      max-width: 560px; width: 100%; max-height: 90vh; overflow-y: auto;
+      padding: 48px 48px 40px; position: relative; box-shadow: 0 32px 80px rgba(0,0,0,.5);
+    }
+    .cookie-modal-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px,3vw,28px); font-weight: 500; color: var(--white); margin-bottom: 10px; letter-spacing: -.01em; }
+    .cookie-modal-intro { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 4px; }
+    .cookie-category { padding: 20px 0; border-top: 1px solid var(--border); }
+    .cookie-cat-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 7px; }
+    .cookie-cat-title { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--cream); }
+    .cookie-always-on { font-size: 9.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 3px 10px; white-space: nowrap; }
+    .cookie-cat-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
+    .c-toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; cursor: pointer; }
+    .c-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
+    .c-toggle-track { position: absolute; inset: 0; background: var(--border-2); cursor: pointer; transition: background .2s; }
+    .c-toggle input:checked + .c-toggle-track { background: var(--gold); }
+    .c-toggle-track::after { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; transition: transform .2s; }
+    .c-toggle input:checked + .c-toggle-track::after { transform: translateX(20px); }
+    .c-toggle input:focus-visible + .c-toggle-track { outline: 2px solid var(--gold); outline-offset: 2px; }
+    .cookie-modal-footer { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
+    .cookie-modal-footer-right { display: flex; gap: 10px; flex-wrap: wrap; }
+    .cookie-modal-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; background: transparent; border: 1px solid var(--border-2); color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .2s, color .2s; padding: 0; }
+    .cookie-modal-close svg { stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; }
+    .cookie-modal-close:hover { border-color: var(--gold-dim); color: var(--gold); }
+    .cookie-settings-link { font-size: 11px; color: var(--ghost); letter-spacing: .04em; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; transition: color .2s; }
+    .cookie-settings-link:hover { color: var(--muted); }
+
+    @media (max-width: 700px) {
+      .cookie-banner-inner { flex-direction: column; align-items: flex-start; }
+      .cookie-banner-actions { width: 100%; }
+      .cookie-modal { padding: 36px 24px 28px; }
+      .cookie-modal-footer { flex-direction: column; align-items: stretch; }
+      .cookie-modal-footer-right { justify-content: stretch; }
+      .cookie-modal-footer .btn-sm { flex: 1; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<nav id="policy-nav">
+  <div class="wrap">
+    <div class="nav-flex">
+      <a href="index.html" aria-label="GAMM by Giggle AI Innovation — Home">
+        <img src="asset/GAMM-logo-trans.png" alt="GAMM by Giggle AI Innovation" class="nav-logo-img" id="navLogo">
+      </a>
+      <div style="display:flex; align-items:center; gap:12px;">
+        <a href="https://www.linkedin.com/company/giggle-ai-innovation" target="_blank" rel="noopener" class="social-link" aria-label="Giggle AI Innovation on LinkedIn">
+          <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+        <button id="themeToggle" class="theme-toggle" aria-label="Toggle colour theme">
+          <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <a href="index.html" class="btn btn-outline">&larr; Back to GAMM</a>
+      </div>
+    </div>
+  </div>
+</nav>
+
+
+<main>
+  <div class="wrap">
+    <div class="policy-page">
+      <p class="policy-eyebrow">Legal</p>
+      <h1 class="policy-h1">Privacy Policy</h1>
+      <p class="policy-meta">Giggle AI Innovation &nbsp;&bull;&nbsp; Last updated: May 2026</p>
+
+      <div class="policy-section">
+        <h2 class="policy-h2">Who we are</h2>
+        <div class="policy-body">
+          <p>Giggle AI Innovation is a consultancy and product company building AI decision control infrastructure for regulated healthcare organisations. Our flagship system, GAMM, installs a control layer over AI-driven decisions in production environments.</p>
+          <p>We operate under Dutch and EU law. For privacy matters, contact us at <a href="mailto:info@giggleaiinnovation.com">info@giggleaiinnovation.com</a>.</p>
+          <p><strong style="color: var(--cream);">Website:</strong> <a href="https://giggleaiinnovation.com">giggleaiinnovation.com</a><br>
+          <strong style="color: var(--cream);">Contact:</strong> <a href="mailto:info@giggleaiinnovation.com">info@giggleaiinnovation.com</a></p>
+        </div>
+      </div>
+
+      <hr class="policy-divider">
+
+      <div class="policy-section">
+        <h2 class="policy-h2">What data we collect</h2>
+        <div class="policy-body">
+          <p>We collect data only when you actively provide it or — with your consent — through analytics tools.</p>
+          <p><strong style="color: var(--cream);">Information you provide directly:</strong></p>
+          <ul>
+            <li>Your name and email address when you send an enquiry via email</li>
+            <li>Any information you choose to include in your message</li>
+            <li>Booking details if you schedule a call through our Calendly link</li>
+          </ul>
+          <p><strong style="color: var(--cream);">Technical data (if analytics consent is given):</strong></p>
+          <ul>
+            <li>Pages visited and time spent</li>
+            <li>Referring URL and general geographic region</li>
+            <li>Device type and browser</li>
+          </ul>
+          <p>We do not collect sensitive personal data. We do not sell your data to any third party.</p>
+        </div>
+      </div>
+
+      <hr class="policy-divider">
+
+      <div class="policy-section">
+        <h2 class="policy-h2">How we use your data</h2>
+        <div class="policy-body">
+          <p>We use the information you provide solely to:</p>
+          <ul>
+            <li>Respond to your enquiry or question</li>
+            <li>Prepare for and follow up on scheduled calls</li>
+            <li>Send information you have explicitly requested</li>
+          </ul>
+          <p>We do not use your contact information for unsolicited marketing. We will never share your personal data with third parties for marketing or advertising purposes.</p>
+          <p>If you have given analytics consent, aggregated and anonymised data may be used to understand how the website is used and to improve its content.</p>
+        </div>
+      </div>
+
+      <hr class="policy-divider">
+
+      <div class="policy-section">
+        <h2 class="policy-h2">Third-party services</h2>
+        <div class="policy-body">
+          <p><strong style="color: var(--cream);">Calendly:</strong> If you use our booking link, Calendly processes your name, email address, and calendar data in accordance with <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener">Calendly's Privacy Policy</a>. We do not control their data practices.</p>
+          <p><strong style="color: var(--cream);">Email:</strong> Enquiries sent via our email address are handled through our email provider. We retain email correspondence for as long as it is relevant to the enquiry or business relationship.</p>
+          <p><strong style="color: var(--cream);">Analytics:</strong> If you consent to analytics cookies, we may load an analytics tool (currently none is active). We will update this policy if we add one. Analytics data is anonymised and aggregated where possible.</p>
+          <p><strong style="color: var(--cream);">Google Fonts:</strong> This site uses Google Fonts, which may result in a request to Google's servers when the page loads. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
+        </div>
+      </div>
+
+      <hr class="policy-divider">
+
+      <div class="policy-section">
+        <h2 class="policy-h2">Cookies</h2>
+        <div class="policy-body">
+          <p>We use cookies and localStorage to remember your preferences (dark/light theme, cookie consent choice) and — with your consent — for analytics and marketing purposes. See our <a href="cookie-policy.html">Cookie Policy</a> for full details.</p>
+          <p>You can manage or withdraw your cookie consent at any time using the <button id="open-prefs-pp" style="background:none;border:none;padding:0;color:var(--gold);cursor:pointer;font:inherit;text-decoration:underline;text-underline-offset:2px;">Cookie settings</button> link in the footer.</p>
+        </div>
+      </div>
+
+      <hr class="policy-divider">
+
+      <div class="policy-section">
+        <h2 class="policy-h2">Data retention</h2>
+        <div class="policy-body">
+          <p>We retain email enquiries for as long as they are relevant to an active or potential business relationship, and for a maximum of three years after our last correspondence unless a longer period is required by law.</p>
+          <p>Analytics data, if collected, is retained according to the analytics provider's settings and is generally anonymised after 14 months.</p>
+        </div>
+      </div>
+
+      <hr class="policy-divider">
+
+      <div class="policy-section">
+        <h2 class="policy-h2">Your rights under GDPR</h2>
+        <div class="policy-body">
+          <p>As a resident of the EU or EEA, you have the following rights with respect to your personal data:</p>
+          <ul>
+            <li><strong style="color: var(--cream);">Right of access</strong> — You can request a copy of the personal data we hold about you.</li>
+            <li><strong style="color: var(--cream);">Right to rectification</strong> — You can ask us to correct inaccurate data.</li>
+            <li><strong style="color: var(--cream);">Right to erasure</strong> — You can ask us to delete your personal data in certain circumstances.</li>
+            <li><strong style="color: var(--cream);">Right to object</strong> — You can object to how we process your data where we rely on legitimate interests.</li>
+            <li><strong style="color: var(--cream);">Right to data portability</strong> — You can request your data in a structured, machine-readable format.</li>
+            <li><strong style="color: var(--cream);">Right to withdraw consent</strong> — Where processing is based on consent (e.g. analytics cookies), you can withdraw consent at any time.</li>
+          </ul>
+          <p>To exercise any of these rights, contact us at <a href="mailto:info@giggleaiinnovation.com">info@giggleaiinnovation.com</a>.</p>
+          <p>If you believe we have not handled your data correctly, you have the right to lodge a complaint with the Dutch Data Protection Authority (Autoriteit Persoonsgegevens) at <a href="https://www.autoriteitpersoonsgegevens.nl" target="_blank" rel="noopener">autoriteitpersoonsgegevens.nl</a>.</p>
+        </div>
+      </div>
+
+      <hr class="policy-divider">
+
+      <div class="policy-section">
+        <h2 class="policy-h2">Changes to this policy</h2>
+        <div class="policy-body">
+          <p>We may update this Privacy Policy from time to time. The date at the top of this page reflects when the policy was last revised. Continued use of the site after an update constitutes acceptance of the revised policy.</p>
+        </div>
+      </div>
+
+      <hr class="policy-divider">
+
+      <div class="policy-section">
+        <h2 class="policy-h2">Contact</h2>
+        <div class="policy-body">
+          <p>For any privacy-related questions or requests, contact:<br>
+          <a href="mailto:info@giggleaiinnovation.com">info@giggleaiinnovation.com</a></p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</main>
+
+
+<footer>
+  <div class="wrap">
+    <div class="footer-flex">
+      <div>
+        <img src="asset/GAMM-logo-trans.png" alt="GAMM by Giggle AI Innovation" class="footer-logo-img" id="footerLogo">
+      </div>
+      <div class="footer-right">
+        <p>AI Decision Control Operating System</p>
+        <p style="margin-top:5px;">&copy; 2026 Giggle AI Innovation. All rights reserved.</p>
+        <div class="footer-legal">
+          <a href="privacy-policy.html" class="cookie-settings-link">Privacy Policy</a>
+          <a href="cookie-policy.html" class="cookie-settings-link">Cookie Policy</a>
+          <button id="cookie-settings-btn" class="cookie-settings-link">Cookie settings</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+
+<!-- Cookie Banner -->
+<div id="cookie-banner" role="dialog" aria-label="Cookie consent" aria-describedby="cookie-banner-desc">
+  <div class="wrap">
+    <div class="cookie-banner-inner">
+      <div class="cookie-banner-text">
+        <p class="cookie-banner-desc" id="cookie-banner-desc">
+          We use cookies to make this website work, understand how visitors use it, and improve the GAMM experience. You can accept all cookies, reject non-essential cookies, or manage your preferences.
+        </p>
+        <p class="cookie-banner-links">
+          <a href="privacy-policy.html">Privacy Policy</a>
+          <span aria-hidden="true"> &nbsp;&middot;&nbsp; </span>
+          <a href="cookie-policy.html">Cookie Policy</a>
+        </p>
+      </div>
+      <div class="cookie-banner-actions">
+        <button class="btn btn-sm btn-outline" id="cb-reject">Reject non-essential</button>
+        <button class="btn btn-sm btn-outline" id="cb-manage">Manage preferences</button>
+        <button class="btn btn-sm btn-gold" id="cb-accept">Accept all</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Cookie Preferences Modal -->
+<div id="cookie-modal-overlay" aria-hidden="true">
+  <div class="cookie-modal" role="dialog" aria-modal="true" aria-labelledby="cookie-modal-title">
+    <button class="cookie-modal-close" id="cm-close" aria-label="Close cookie preferences">
+      <svg viewBox="0 0 24 24" width="14" height="14"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+    </button>
+    <h2 class="cookie-modal-title" id="cookie-modal-title">Cookie Preferences</h2>
+    <p class="cookie-modal-intro">Choose which cookies you allow. Strictly necessary cookies are always on — they keep the site working. All other categories are off by default.</p>
+    <div class="cookie-category">
+      <div class="cookie-cat-header">
+        <span class="cookie-cat-title">Strictly Necessary</span>
+        <span class="cookie-always-on" aria-label="Always enabled">Always on</span>
+      </div>
+      <p class="cookie-cat-desc">Required for the website to function. These cannot be turned off. They include your theme preference and cookie consent choice.</p>
+    </div>
+    <div class="cookie-category">
+      <div class="cookie-cat-header">
+        <span class="cookie-cat-title">Analytics</span>
+        <label class="c-toggle">
+          <input type="checkbox" id="cm-analytics" aria-label="Analytics cookies">
+          <span class="c-toggle-track"></span>
+        </label>
+      </div>
+      <p class="cookie-cat-desc">Help us understand how visitors interact with the site — pages viewed, time spent, and entry sources. Used to improve content and experience. No personal data is shared with third parties.</p>
+    </div>
+    <div class="cookie-category">
+      <div class="cookie-cat-header">
+        <span class="cookie-cat-title">Marketing</span>
+        <label class="c-toggle">
+          <input type="checkbox" id="cm-marketing" aria-label="Marketing cookies">
+          <span class="c-toggle-track"></span>
+        </label>
+      </div>
+      <p class="cookie-cat-desc">Allow us to measure the reach of content and outreach efforts. Only activated with explicit consent. No personal data is sold or shared for advertising purposes.</p>
+    </div>
+    <div class="cookie-modal-footer">
+      <button class="btn btn-sm btn-outline" id="cm-reject-all">Reject non-essential</button>
+      <div class="cookie-modal-footer-right">
+        <button class="btn btn-sm btn-outline" id="cm-save">Save preferences</button>
+        <button class="btn btn-sm btn-gold" id="cm-accept-all">Accept all</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  // Theme
+  var themeToggle = document.getElementById('themeToggle');
+  var htmlEl = document.documentElement;
+  var logos = [document.getElementById('navLogo'), document.getElementById('footerLogo')];
+  var DARK_LOGO  = 'asset/GAMM-logo-trans.png';
+  var LIGHT_LOGO = 'asset/GAMM-Light-Logo.png';
+  function applyTheme(light) {
+    if (light) { htmlEl.setAttribute('data-theme', 'light'); }
+    else        { htmlEl.removeAttribute('data-theme'); }
+    logos.forEach(function(el) { if (el) el.src = light ? LIGHT_LOGO : DARK_LOGO; });
+  }
+  applyTheme(localStorage.getItem('gammTheme') !== 'dark');
+  themeToggle.addEventListener('click', function() {
+    var isLight = htmlEl.getAttribute('data-theme') === 'light';
+    localStorage.setItem('gammTheme', isLight ? 'dark' : 'light');
+    applyTheme(!isLight);
+  });
+</script>
+
+<script>
+// Cookie Consent
+(function () {
+  var CONSENT_KEY = 'gamm_cookie_consent';
+  var CONSENT_VERSION = '1.0';
+
+  function getConsent() {
+    try {
+      var raw = localStorage.getItem(CONSENT_KEY);
+      if (!raw) return null;
+      var c = JSON.parse(raw);
+      return c.version === CONSENT_VERSION ? c : null;
+    } catch (e) { return null; }
+  }
+
+  function writeConsent(analytics, marketing) {
+    var c = { necessary: true, analytics: !!analytics, marketing: !!marketing, timestamp: new Date().toISOString(), version: CONSENT_VERSION };
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(c));
+    return c;
+  }
+
+  function loadAnalytics() { /* ANALYTICS_PLACEHOLDER */ }
+  function loadMarketing() { /* MARKETING_PLACEHOLDER */ }
+  function activateConsent(c) { if (c.analytics) loadAnalytics(); if (c.marketing) loadMarketing(); }
+
+  var banner   = document.getElementById('cookie-banner');
+  var overlay  = document.getElementById('cookie-modal-overlay');
+  var cmAnalyt = document.getElementById('cm-analytics');
+  var cmMarket = document.getElementById('cm-marketing');
+
+  function showBanner() { banner.classList.add('cb-visible'); }
+  function hideBanner() { banner.classList.remove('cb-visible'); }
+
+  function showModal() {
+    var c = getConsent();
+    cmAnalyt.checked = c ? c.analytics : false;
+    cmMarket.checked = c ? c.marketing : false;
+    overlay.classList.add('cm-visible');
+    overlay.setAttribute('aria-hidden', 'false');
+    document.body.style.overflow = 'hidden';
+    var cmClose = document.getElementById('cm-close');
+    requestAnimationFrame(function () { cmClose.focus(); });
+  }
+
+  function hideModal() {
+    overlay.classList.remove('cm-visible');
+    overlay.setAttribute('aria-hidden', 'true');
+    document.body.style.overflow = '';
+  }
+
+  function acceptAll() { activateConsent(writeConsent(true, true)); hideBanner(); hideModal(); }
+  function rejectAll() { writeConsent(false, false); hideBanner(); hideModal(); }
+  function savePrefs() { activateConsent(writeConsent(cmAnalyt.checked, cmMarket.checked)); hideBanner(); hideModal(); }
+
+  document.getElementById('cb-accept').addEventListener('click', acceptAll);
+  document.getElementById('cb-reject').addEventListener('click', rejectAll);
+  document.getElementById('cb-manage').addEventListener('click', showModal);
+  document.getElementById('cm-accept-all').addEventListener('click', acceptAll);
+  document.getElementById('cm-reject-all').addEventListener('click', rejectAll);
+  document.getElementById('cm-save').addEventListener('click', savePrefs);
+  document.getElementById('cm-close').addEventListener('click', hideModal);
+
+  overlay.addEventListener('click', function (e) { if (e.target === overlay) hideModal(); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('cm-visible')) hideModal(); });
+
+  var settBtn = document.getElementById('cookie-settings-btn');
+  if (settBtn) settBtn.addEventListener('click', function (e) { e.preventDefault(); showModal(); });
+
+  var openPrefsBtn = document.getElementById('open-prefs-pp');
+  if (openPrefsBtn) openPrefsBtn.addEventListener('click', function (e) { e.preventDefault(); showModal(); });
+
+  var existing = getConsent();
+  if (!existing) { setTimeout(showBanner, 900); } else { activateConsent(existing); }
+})();
+</script>
+
+</body>
+</html>
