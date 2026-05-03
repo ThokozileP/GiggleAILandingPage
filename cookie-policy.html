@@ -422,7 +422,9 @@
         </h3>
         <div class="policy-body">
           <p>Analytics cookies help us understand how visitors use the website — which pages they visit, how long they stay, and how they arrived. This information is used in aggregate to improve content and the user experience.</p>
-          <p><strong style="color:var(--cream);">Current status:</strong> No analytics tool is currently active. If we add one (e.g. Google Analytics, Plausible, or similar), it will only load after you give analytics consent, and this policy will be updated to name the tool and its data practices.</p>
+          <p><strong style="color:var(--cream);">Tool:</strong> <a href="https://plausible.io" target="_blank" rel="noopener">Plausible Analytics</a> — a privacy-first analytics tool hosted in the EU. Plausible does not use cookies, does not collect personal data, and does not track individuals across sites. Data is aggregated and anonymised. See <a href="https://plausible.io/privacy-focused-web-analytics" target="_blank" rel="noopener">Plausible's privacy policy</a>.</p>
+          <p><strong style="color:var(--cream);">What is tracked:</strong> page views, referral sources, browser/device type, and the following conversion events: Guided Assessment Click, Calendly Click, Contact Email Click, LinkedIn Click.</p>
+          <p><strong style="color:var(--cream);">Consent:</strong> Plausible only loads after you give analytics consent. If you reject analytics, no data is sent.</p>
           <p>Analytics cookies are <strong style="color:var(--cream);">off by default</strong>. They only activate if you explicitly choose "Accept all" or enable analytics in your cookie preferences.</p>
         </div>
       </div>
@@ -636,7 +638,16 @@
     return c;
   }
 
-  function loadAnalytics() { /* ANALYTICS_PLACEHOLDER */ }
+  function loadAnalytics() {
+    window.plausible = window.plausible || function () {
+      (window.plausible.q = window.plausible.q || []).push(arguments);
+    };
+    var s = document.createElement('script');
+    s.defer = true;
+    s.setAttribute('data-domain', 'giggleaiinnovation.com');
+    s.src = 'https://plausible.io/js/script.js';
+    document.head.appendChild(s);
+  }
   function loadMarketing() { /* MARKETING_PLACEHOLDER */ }
   function activateConsent(c) { if (c.analytics) loadAnalytics(); if (c.marketing) loadMarketing(); }
 

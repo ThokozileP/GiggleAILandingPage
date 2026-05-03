@@ -2068,17 +2068,18 @@
   }
 
   // ─ Script loaders ───────────────────────────────────────────────────────────
-  // To add Google Analytics 4, replace loadAnalytics() with:
-  //   var s = document.createElement('script');
-  //   s.src = 'https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID';
-  //   s.async = true; document.head.appendChild(s);
-  //   window.dataLayer = window.dataLayer || [];
-  //   function gtag(){ dataLayer.push(arguments); }
-  //   gtag('js', new Date()); gtag('config', 'GA_MEASUREMENT_ID');
-  function loadAnalytics() { /* ANALYTICS_PLACEHOLDER */ }
+  function loadAnalytics() {
+    // Plausible Analytics — cookie-free, no personal data, GDPR-exempt
+    window.plausible = window.plausible || function () {
+      (window.plausible.q = window.plausible.q || []).push(arguments);
+    };
+    var s = document.createElement('script');
+    s.defer = true;
+    s.setAttribute('data-domain', 'giggleaiinnovation.com');
+    s.src = 'https://plausible.io/js/script.js';
+    document.head.appendChild(s);
+  }
 
-  // To add Meta Pixel or other marketing tags, replace loadMarketing() with
-  // the vendor's snippet.
   function loadMarketing() { /* MARKETING_PLACEHOLDER */ }
 
   function activateConsent(c) {
@@ -2167,6 +2168,38 @@
   } else {
     activateConsent(existing);
   }
+})();
+</script>
+
+<script>
+// ── Conversion event tracking ─────────────────────────────────────────────────
+// Fires only if Plausible has loaded (analytics consent given).
+// Safe no-op otherwise.
+(function () {
+  function track(event) {
+    if (typeof window.plausible === 'function') window.plausible(event);
+  }
+
+  document.addEventListener('click', function (e) {
+    var el = e.target.closest('a, button');
+    if (!el) return;
+
+    var href = (el.getAttribute('href') || '').trim();
+    var text = (el.textContent || '').trim();
+
+    if (text.indexOf('Guided Assessment') !== -1) {
+      track('Guided Assessment Click');
+    }
+    if (href.indexOf('calendly.com') !== -1) {
+      track('Calendly Click');
+    }
+    if (href.slice(0, 7) === 'mailto:') {
+      track('Contact Email Click');
+    }
+    if (href.indexOf('linkedin.com') !== -1) {
+      track('LinkedIn Click');
+    }
+  });
 })();
 </script>
 

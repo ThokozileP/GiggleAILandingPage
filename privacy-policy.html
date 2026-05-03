@@ -393,7 +393,7 @@
         <div class="policy-body">
           <p><strong style="color: var(--cream);">Calendly:</strong> If you use our booking link, Calendly processes your name, email address, and calendar data in accordance with <a href="https://calendly.com/legal/privacy-notice" target="_blank" rel="noopener">Calendly's Privacy Policy</a>. We do not control their data practices.</p>
           <p><strong style="color: var(--cream);">Email:</strong> Enquiries sent via our email address are handled through our email provider. We retain email correspondence for as long as it is relevant to the enquiry or business relationship.</p>
-          <p><strong style="color: var(--cream);">Analytics:</strong> If you consent to analytics cookies, we may load an analytics tool (currently none is active). We will update this policy if we add one. Analytics data is anonymised and aggregated where possible.</p>
+          <p><strong style="color: var(--cream);">Analytics:</strong> If you consent to analytics, we load <a href="https://plausible.io" target="_blank" rel="noopener">Plausible Analytics</a> — a privacy-first, EU-hosted tool that uses no cookies and collects no personal data. Data is aggregated and anonymised. Plausible does not allow us to identify individual visitors.</p>
           <p><strong style="color: var(--cream);">Google Fonts:</strong> This site uses Google Fonts, which may result in a request to Google's servers when the page loads. See <a href="https://policies.google.com/privacy" target="_blank" rel="noopener">Google's Privacy Policy</a>.</p>
         </div>
       </div>
@@ -592,7 +592,16 @@
     return c;
   }
 
-  function loadAnalytics() { /* ANALYTICS_PLACEHOLDER */ }
+  function loadAnalytics() {
+    window.plausible = window.plausible || function () {
+      (window.plausible.q = window.plausible.q || []).push(arguments);
+    };
+    var s = document.createElement('script');
+    s.defer = true;
+    s.setAttribute('data-domain', 'giggleaiinnovation.com');
+    s.src = 'https://plausible.io/js/script.js';
+    document.head.appendChild(s);
+  }
   function loadMarketing() { /* MARKETING_PLACEHOLDER */ }
   function activateConsent(c) { if (c.analytics) loadAnalytics(); if (c.marketing) loadMarketing(); }
 
