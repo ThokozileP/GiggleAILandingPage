@@ -2169,33 +2169,32 @@
 </script>
 
 <script>
-// ── Conversion event tracking ─────────────────────────────────────────────────
-// Fires only if Plausible has loaded (analytics consent given).
-// Safe no-op otherwise.
+// ── Plausible custom event tracking ──────────────────────────────────────────
 (function () {
-  function track(event) {
-    if (typeof window.plausible === 'function') window.plausible(event);
+  function pe(name) {
+    if (window.plausible) window.plausible(name);
   }
 
-  document.addEventListener('click', function (e) {
-    var el = e.target.closest('a, button');
-    if (!el) return;
+  // Guided Assessment Click — 4 "Request Guided Assessment" links
+  document.querySelectorAll('a[href*="calendly.com"]').forEach(function (el) {
+    if (el.textContent.indexOf('Guided Assessment') !== -1) {
+      el.addEventListener('click', function () { pe('Guided Assessment Click'); });
+    }
+  });
 
-    var href = (el.getAttribute('href') || '').trim();
-    var text = (el.textContent || '').trim();
+  // Calendly Click — same 4 links (fires alongside Guided Assessment Click)
+  document.querySelectorAll('a[href*="calendly.com"]').forEach(function (el) {
+    el.addEventListener('click', function () { pe('Calendly Click'); });
+  });
 
-    if (text.indexOf('Guided Assessment') !== -1) {
-      track('Guided Assessment Click');
-    }
-    if (href.indexOf('calendly.com') !== -1) {
-      track('Calendly Click');
-    }
-    if (href.slice(0, 7) === 'mailto:') {
-      track('Contact Email Click');
-    }
-    if (href.indexOf('linkedin.com') !== -1) {
-      track('LinkedIn Click');
-    }
+  // Contact Email Click — 6 mailto links
+  document.querySelectorAll('a[href^="mailto:"]').forEach(function (el) {
+    el.addEventListener('click', function () { pe('Contact Email Click'); });
+  });
+
+  // LinkedIn Click — 1 LinkedIn link (nav icon)
+  document.querySelectorAll('a[href*="linkedin.com"]').forEach(function (el) {
+    el.addEventListener('click', function () { pe('LinkedIn Click'); });
   });
 })();
 </script>
