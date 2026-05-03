@@ -10,6 +10,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
+  <!-- Privacy-friendly analytics by Plausible -->
+  <script async src="https://plausible.io/js/pa-PxUFHo3uPnsk21OI4qaPp.js"></script>
+  <script>
+    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
+    plausible.init()
+  </script>
+
   <!-- Canonical -->
   <link rel="canonical" href="https://giggleaiinnovation.com">
 
@@ -2068,17 +2075,7 @@
   }
 
   // ─ Script loaders ───────────────────────────────────────────────────────────
-  function loadAnalytics() {
-    // Plausible Analytics — cookie-free, no personal data, GDPR-exempt
-    window.plausible = window.plausible || function () {
-      (window.plausible.q = window.plausible.q || []).push(arguments);
-    };
-    var s = document.createElement('script');
-    s.defer = true;
-    s.setAttribute('data-domain', 'giggleaiinnovation.com');
-    s.src = 'https://plausible.io/js/script.js';
-    document.head.appendChild(s);
-  }
+  function loadAnalytics() { /* Plausible loads from <head> — no action needed */ }
 
   function loadMarketing() { /* MARKETING_PLACEHOLDER */ }
 
