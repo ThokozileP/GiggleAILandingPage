@@ -1402,6 +1402,74 @@
     .cookie-modal-footer .btn-sm { flex: 1; text-align: center; }
   }
 
+  /* ─── THINKING / FROM THE FOUNDER ───────────────────────────────────────── */
+  .thinking-card {
+    display: block;
+    max-width: 700px;
+    padding: 48px 52px;
+    border: 1px solid var(--border);
+    background: var(--surface-2);
+    transition: border-color .3s, background .3s;
+    text-decoration: none;
+  }
+
+  .thinking-card:hover {
+    border-color: var(--gold-dim);
+    background: var(--gold-faint);
+  }
+
+  .thinking-eyebrow {
+    display: block;
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-bottom: 18px;
+  }
+
+  .thinking-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(22px, 3vw, 34px);
+    font-weight: 400;
+    color: var(--white);
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+    margin-bottom: 14px;
+  }
+
+  .thinking-desc {
+    font-size: 14.5px;
+    color: var(--muted);
+    line-height: 1.72;
+    margin-bottom: 28px;
+  }
+
+  .thinking-read {
+    font-size: 10.5px;
+    font-weight: 500;
+    letter-spacing: .18em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: gap .2s;
+  }
+
+  .thinking-read::after {
+    content: '→';
+    letter-spacing: 0;
+    font-size: 14px;
+    line-height: 1;
+  }
+
+  .thinking-card:hover .thinking-read { gap: 14px; }
+
+  @media (max-width: 700px) {
+    .thinking-card { padding: 36px 28px; }
+  }
+
   </style>
 
   <!-- Structured Data: Organization -->
@@ -1892,6 +1960,20 @@
       <p class="faq-a">GAMM is built first for healthcare AI organisations — developers and operators of SaMD, clinical decision support systems, imaging AI, and other regulated AI systems operating under EU AI Act and MDR requirements. It is led by CTOs, Heads of AI, clinical AI leads, and regulatory affairs teams.</p>
     </div>
 
+  </div>
+</section>
+
+
+<!-- ═══ FROM THE FOUNDER ════════════════════════════════════════════════════ -->
+<section class="section" id="thinking" aria-label="From the founder">
+  <div class="wrap">
+    <p class="sec-label">From the Founder</p>
+    <a href="article-the-runtime-gap.html" class="thinking-card r">
+      <span class="thinking-eyebrow">Article &mdash; AI Decision Control</span>
+      <h2 class="thinking-title">The question that exposes most AI governance programs</h2>
+      <p class="thinking-desc">One question most AI teams cannot answer without reconstruction &mdash; and what that reveals about the gap between compliance and control.</p>
+      <span class="thinking-read">Read the full article</span>
+    </a>
   </div>
 </section>
 
