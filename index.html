@@ -10,11 +10,13 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
 
-  <!-- Privacy-friendly analytics by Plausible -->
-  <script async src="https://plausible.io/js/pa-PxUFHo3uPnsk21OI4qaPp.js"></script>
-  <script>
-    window.plausible=window.plausible||function(){(plausible.q=plausible.q||[]).push(arguments)},plausible.init=plausible.init||function(i){plausible.o=i||{}};
-    plausible.init()
+  <!-- Microsoft Clarity -->
+  <script type="text/javascript">
+    (function(c,l,a,r,i,t,y){
+        c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+        t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+        y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "wpvlzt1dr4");
   </script>
 
   <!-- Canonical -->
@@ -2157,7 +2159,7 @@
   }
 
   // ─ Script loaders ───────────────────────────────────────────────────────────
-  function loadAnalytics() { /* Plausible loads from <head> — no action needed */ }
+  function loadAnalytics() { /* Clarity loads from <head> — no action needed */ }
 
   function loadMarketing() { /* MARKETING_PLACEHOLDER */ }
 
@@ -2251,10 +2253,10 @@
 </script>
 
 <script>
-// ── Plausible custom event tracking ──────────────────────────────────────────
+// ── Clarity custom event tracking ────────────────────────────────────────────
 (function () {
   function pe(name) {
-    if (window.plausible) window.plausible(name);
+    if (window.clarity) window.clarity('event', name);
   }
 
   // Guided Assessment Click — 4 "Request Guided Assessment" links
