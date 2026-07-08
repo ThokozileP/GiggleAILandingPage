@@ -1,33 +1,36 @@
-# GAMM — AI Decision Control Operating System
+# Giggle AI Innovation Website
 
-Landing page for **GAMM by Giggle AI Innovation**.
+Static website for **Giggle AI Innovation**.
 
-GAMM installs a control layer over AI-driven decisions in production, making every decision visible, owned, and interruptible. Built for healthcare AI organisations operating under EU AI Act and MDR pressure.
+The current positioning is **Clinical Agent Runtime Control for Healthcare AI**. The site presents Giggle AI Innovation as a specialist advisory and control-framework company helping healthcare AI companies control, monitor, and reconstruct how clinical agents behave in real clinical workflows.
 
 ## Stack
 
-- Pure HTML + CSS — no framework, no build step
-- Google Fonts (Cormorant Garamond + Inter)
-- Vanilla JavaScript (scroll reveal, smooth scroll)
+- Pure HTML and CSS, with no framework or build step
+- Google Fonts: Cormorant Garamond and Inter
+- Vanilla JavaScript for scroll reveal, theme switching, cookie preferences, and consent-based analytics loading
 
 ## Structure
 
-```
+```text
 GiggleAILandingPage/
-├── index.html        # Single-page site (all CSS and JS embedded)
+├── index.html                    # Homepage
+├── frameworks.html               # Runtime control frameworks
+├── article-the-runtime-gap.html  # Founder article
+├── privacy-policy.html           # Privacy policy
+├── cookie-policy.html            # Cookie policy
 └── asset/
-    ├── GAMM-logo-trans.png     # Transparent logo (used on site)
-    ├── GAMM-Logo.png           # White-background logo
-    └── GAMM Linkedin Cover.png # OG/social preview image
+    ├── Giggleaiinnovation-logo-light.png
+    └── Giggleaiinnovation-logo-dark.png
 ```
 
 ## Deployment
 
-Static site — no build step required.
+Static site. No build step is required.
 
-**Vercel:** Import repo, set Framework to `Other`, Output Directory to `.`, leave Build Command empty.
+Vercel: import the repo, set Framework to `Other`, set Output Directory to `.`, and leave Build Command empty.
 
-**Any static host:** Upload `index.html` and the `asset/` folder. Done.
+Any static host: upload the HTML files and the `asset/` folder.
 
 ## Contact
 
