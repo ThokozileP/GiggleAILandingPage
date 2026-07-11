@@ -1,0 +1,7 @@
+/* ─── THEME-DEPENDENT RULES (not pure token overrides) ──────────────────── */
+[data-theme="light"] #nav { background: rgba(255,255,255,.94); }
+
+.icon-moon { display: none; }
+.icon-sun  { display: block; }
+[data-theme="light"] .icon-moon { display: block; }
+[data-theme="light"] .icon-sun  { display: none; }

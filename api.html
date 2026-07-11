@@ -3,25 +3,25 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The runtime gap in clinical AI: why healthcare AI teams need reconstructable evidence of what clinical agents recommended, why they acted, and who intervened.">
-  <title>The Runtime Gap | Giggle AI Innovation</title>
+  <meta name="description" content="The CARC Runtime API: a REST API for decisions, evidence, policies, and registries, described by an OpenAPI specification. Design partner preview available now.">
+  <title>API Reference | CARC by Giggle AI Innovation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 
   <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
-  <link rel="canonical" href="https://giggleaiinnovation.com/article-the-runtime-gap.html">
+  <link rel="canonical" href="https://giggleaiinnovation.com/api.html">
 
-  <meta property="og:type"        content="article">
-  <meta property="og:url"         content="https://giggleaiinnovation.com/article-the-runtime-gap.html">
-  <meta property="og:title"       content="The Runtime Gap | Giggle AI Innovation">
-  <meta property="og:description" content="Why healthcare AI teams need reconstructable evidence of what clinical agents recommended, why they acted, and who intervened.">
+  <meta property="og:type"        content="website">
+  <meta property="og:url"         content="https://giggleaiinnovation.com/api.html">
+  <meta property="og:title"       content="API Reference | CARC by Giggle AI Innovation">
+  <meta property="og:description" content="A REST API for runtime control operations, described by an OpenAPI specification.">
   <meta property="og:image"       content="https://giggleaiinnovation.com/assets/images/giggleaiinnovation-logo-dark.png">
 
   <meta name="twitter:card"        content="summary_large_image">
-  <meta name="twitter:title"       content="The Runtime Gap | Giggle AI Innovation">
-  <meta name="twitter:description" content="Why healthcare AI teams need reconstructable evidence of what clinical agents recommended, why they acted, and who intervened.">
+  <meta name="twitter:title"       content="API Reference | CARC by Giggle AI Innovation">
+  <meta name="twitter:description" content="A REST API for runtime control operations, described by an OpenAPI specification.">
 
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -78,7 +78,7 @@
           <svg class="icon-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/><line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/></svg>
           <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
         </button>
-        <a href="mailto:info@giggleaiinnovation.com?subject=CARC%20Question" class="btn btn-outline nav-ask">Ask a Question</a>
+        <a href="mailto:info@giggleaiinnovation.com?subject=CARC%20API%20Question" class="btn btn-outline nav-ask">Ask a Question</a>
         <a href="#" data-config-url="demoUrl" target="_blank" rel="noopener" class="btn btn-gold">Request Demo</a>
       </div>
     </div>
@@ -86,97 +86,138 @@
 </nav>
 
 
-<!-- ═══ ARTICLE ════════════════════════════════════════════════════════════════ -->
-<main id="main" class="article-outer">
+<main id="main">
+<!-- ═══ HERO ═══════════════════════════════════════════════════════════════════ -->
+<section class="product-hero">
   <div class="wrap">
-  <div class="article-inner">
-
-    <p class="article-kicker r">Article &mdash; Clinical AI Oversight</p>
-
-    <h1 class="article-title r r-d1">The question that exposes most clinical AI control gaps</h1>
-
-    <span class="article-byline r r-d2">Thokozile Phiri &mdash; Founder, Giggle AI Innovation</span>
-
-    <div class="article-prose">
-
-      <p class="r">Last week I asked a question to a team deploying AI in a regulated clinical environment:</p>
-
-      <div class="article-query r r-d1">&ldquo;Can you show me all cases where a high-confidence recommendation was overridden?&rdquo;</div>
-
-      <p class="r">The answer was immediate: &ldquo;Yes. We log overrides.&rdquo;</p>
-
-      <p class="r">When we tried to run the query, it didn&rsquo;t exist.</p>
-
-      <p class="r">Override events were logged. Model outputs were stored. But the query &mdash; high-confidence overrides, bound to the confidence that was actually presented &mdash; required pulling from multiple systems, recomputing scores under current settings, and approximating thresholds that had since changed.</p>
-
-      <p class="r">It took two days.</p>
-
-      <p class="r">The result was assembled, not retrieved. That is not evidence. That is reconstruction.</p>
-
-
-      <h3 class="probe-head r">This is not a logging problem</h3>
-
-      <p class="r">The confidence score in the logs is not the confidence score that was presented. Confidence is produced at render time. Through thresholds. Across versions. Those components change. The score becomes a function, not a value. So when you ask for what was presented at time T, you are not retrieving it. You are attempting to recreate it.</p>
-
-
-      <h3 class="probe-head r">The same applies to decision context</h3>
-
-      <p class="r">The model output is stored. What was presented is a composition:</p>
-
-      <ul class="em-list r r-d1">
-        <li>score</li>
-        <li>label</li>
-        <li>threshold logic</li>
-        <li>suppression rules</li>
-        <li>UI state</li>
-      </ul>
-
-      <p class="r">Assembled at render time. When components change, the composition cannot be reconstructed exactly. It must be reconstructed. And reconstruction is not evidence.</p>
-
-
-      <h3 class="probe-head r">What changes when the system is built differently</h3>
-
-      <p class="r">When the same question is asked in a system with CARC's runtime control layer in place:</p>
-
-      <div class="article-query r r-d1">Show all cases where a high-confidence recommendation was overridden.</div>
-
-      <p class="r">The query runs. It returns immediately. Confidence as presented. Threshold at time of decision. Override action. Responsible party.</p>
-
-      <p class="r">No reconstruction. No stitching. No approximation.</p>
-
-      <p class="r">The difference is not accuracy. The difference is not performance. The difference is whether the system produces evidence or requires reconstruction.</p>
-
-
-      <h3 class="probe-head r">This is the gap most AI governance work does not reach</h3>
-
-      <p class="r">Compliance can be demonstrated without runtime control. An audit can pass. Documentation can be complete. And the system can still be unable to answer what actually happened at the moment of clinical use.</p>
-
-      <p class="r">Article 14 of the EU AI Act assumes human oversight exists. Article 26(5) assumes it can be demonstrated. The next question is not whether you defined oversight. It is whether your system can prove it was operational when the clinical agent acted.</p>
-
-      <p class="r">Most systems cannot answer that.</p>
-
-
-      <h3 class="probe-head r">One question worth asking your team today</h3>
-
-      <p class="r">If someone asked you to show where humans rejected high-confidence recommendations last quarter &mdash; would your system answer directly? Or would you need to reconstruct it?</p>
-
-    </div>
-
-    <!-- Closing CTA -->
-    <div class="article-cta-block r">
-      <p>
-        If you want to run this question against your own clinical AI system, request a demo of CARC &mdash;
-        or <a href="mailto:info@giggleaiinnovation.com?subject=CARC%20Question">send a question first</a>.
+    <div class="product-hero-inner">
+      <span class="status-badge">Design Partner Preview</span>
+      <p class="eyebrow" style="margin-bottom:20px;">API Reference</p>
+      <h1 class="product-hero-h1">The CARC Runtime API.</h1>
+      <p class="product-hero-sub">
+        A REST API for runtime control operations &mdash; decisions, evidence, policies, and registries &mdash;
+        described by an OpenAPI specification for integration tooling.
       </p>
-      <span class="article-sig">&mdash; Thokozile Phiri, Founder, Giggle AI Innovation</span>
-      <div class="cta-pair" style="margin-top:24px;">
-        <a href="#" data-config-url="demoUrl" target="_blank" rel="noopener" class="btn btn-gold">Request Demo</a>
-        <a href="index.html" class="btn btn-outline">Explore CARC</a>
+      <div class="cta-pair">
+        <a href="#" data-config-url="apiDocsUrl" data-config-hide-if-missing target="_blank" rel="noopener" class="btn btn-gold">Open API Docs &#8599;</a>
+        <a href="#" data-config-url="openApiSpecUrl" data-config-hide-if-missing target="_blank" rel="noopener" class="btn btn-outline">OpenAPI Specification</a>
+      </div>
+      <p class="cta-microcopy">This page is a product overview, not the live reference. Full docs live at the API Docs link above.</p>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ RESOURCE OVERVIEW ══════════════════════════════════════════════════════ -->
+<section class="section section--surface">
+  <div class="wrap">
+    <p class="sec-label">API resource groups</p>
+    <div class="capability-grid">
+      <div class="capability-card r">
+        <p class="capability-card-title">Decisions &amp; Evidence</p>
+        <p>Submit and query runtime decisions, clinical context, and the Decision Context Records the Evidence Engine produces for each one.</p>
+      </div>
+      <div class="capability-card r r-d1">
+        <p class="capability-card-title">Policy &amp; Risk</p>
+        <p>Read and manage the policy and risk rules the Runtime Engine evaluates against as agent behaviour occurs.</p>
+      </div>
+      <div class="capability-card r r-d2">
+        <p class="capability-card-title">Registries</p>
+        <p>Manage the Agent Registry and Adapter Registry entries that connect your clinical AI agents into CARC.</p>
       </div>
     </div>
+  </div>
+</section>
 
+
+<!-- ═══ AUTH ROADMAP ═══════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <p class="sec-label">Authentication</p>
+    <div class="problem-grid">
+      <div class="problem-body r">
+        <h2 class="problem-h2" style="font-size:clamp(26px,3vw,38px);">Access today, and what's ahead.</h2>
+        <p>API access is available to design partners under private preview, provisioned directly during onboarding.</p>
+        <p>Production authentication (API keys and OAuth-based access) is being finalized ahead of public availability. Exact mechanisms will be documented in the API Docs when they go live.</p>
+      </div>
+      <div class="problem-list r r-d1">
+        <div class="problem-item">
+          <p class="problem-item-title">Design partners</p>
+          <p>Credentials issued directly as part of onboarding &mdash; request a demo to start.</p>
+        </div>
+        <div class="problem-item">
+          <p class="problem-item-title">Public availability</p>
+          <p>Not yet live. This page will link directly to the hosted API Docs once public access opens.</p>
+        </div>
+      </div>
+    </div>
   </div>
+</section>
+
+
+<!-- ═══ INTEGRATION ARCHITECTURE ═══════════════════════════════════════════════ -->
+<section class="section section--surface">
+  <div class="wrap">
+    <p class="sec-label">Integration architecture</p>
+    <div class="arch-diagram r" role="img" aria-label="Your systems call the CARC Runtime API, described by the OpenAPI specification, which reaches the Runtime Engine, Evidence Engine, and registries.">
+      <div class="arch-row">
+        <div class="arch-node"><span class="arch-node-label">Your<br>Systems</span></div>
+        <div class="arch-connector">&rarr;</div>
+        <div class="arch-node arch-node--accent"><span class="arch-node-label">Runtime API<br>(OpenAPI)</span></div>
+        <div class="arch-connector">&rarr;</div>
+        <div class="arch-stack">
+          <div class="arch-node"><span class="arch-node-label">Runtime Engine</span></div>
+          <div class="arch-node"><span class="arch-node-label">Evidence Engine</span></div>
+        </div>
+        <div class="arch-connector">&rarr;</div>
+        <div class="arch-node"><span class="arch-node-label">Agent &amp; Adapter<br>Registries</span></div>
+      </div>
+    </div>
   </div>
+</section>
+
+
+<!-- ═══ RELATED PAGES ══════════════════════════════════════════════════════════ -->
+<section class="section">
+  <div class="wrap">
+    <p class="sec-label">Go deeper</p>
+    <div class="doc-link-row r">
+      <div><p class="doc-link-title">Developer Platform</p><p class="doc-link-desc">SDK, quickstart, and integration patterns</p></div>
+      <a href="developers.html" class="doc-link-arrow" aria-label="Developer Platform">&rarr;</a>
+    </div>
+    <div class="doc-link-row r">
+      <div><p class="doc-link-title">Runtime Metrics</p><p class="doc-link-desc">Evidence dashboard and Decision Replay</p></div>
+      <a href="runtime-metrics.html" class="doc-link-arrow" aria-label="Runtime Metrics">&rarr;</a>
+    </div>
+    <div class="doc-link-row r">
+      <div><p class="doc-link-title">Control Console</p><p class="doc-link-desc">Runtime sessions, agent runs, and human review</p></div>
+      <a href="control-console.html" class="doc-link-arrow" aria-label="Control Console">&rarr;</a>
+    </div>
+    <div class="doc-link-row r" data-config-hide-if-missing>
+      <div><p class="doc-link-title">GitHub</p><p class="doc-link-desc">Source, examples, and issue tracking</p></div>
+      <a href="#" data-config-url="githubUrl" target="_blank" rel="noopener" class="doc-link-arrow" aria-label="GitHub">&#8599;</a>
+    </div>
+  </div>
+</section>
+
+
+<!-- ═══ CTA ═════════════════════════════════════════════════════════════════════ -->
+<section class="section" style="border-bottom:none;">
+  <div class="wrap">
+    <div class="mid-cta r">
+      <div>
+        <p class="mid-cta-title">Want API access?</p>
+        <p class="mid-cta-desc">Request a demo to get design partner credentials for the Runtime API.</p>
+      </div>
+      <div class="mid-cta-actions">
+        <div class="cta-pair mid-cta-pair">
+          <a href="index.html" class="btn btn-outline">Back to CARC</a>
+          <a href="#" data-config-url="demoUrl" target="_blank" rel="noopener" class="btn btn-gold">Request Demo</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 </main>
 
 
@@ -192,11 +233,11 @@
         <p style="margin-top:5px;">&copy; 2026 Giggle AI Innovation. All rights reserved.</p>
         <div class="footer-legal">
           <a href="developers.html" class="cookie-settings-link">Developers</a>
-          <a href="api.html" class="cookie-settings-link">API</a>
+          <a href="api.html" class="cookie-settings-link" style="color:var(--gold);">API</a>
           <a href="runtime-metrics.html" class="cookie-settings-link">Runtime Metrics</a>
           <a href="control-console.html" class="cookie-settings-link">Control Console</a>
           <a href="frameworks.html" class="cookie-settings-link">Frameworks</a>
-          <a href="article-the-runtime-gap.html" class="cookie-settings-link" style="color:var(--gold);">Resources</a>
+          <a href="article-the-runtime-gap.html" class="cookie-settings-link">Resources</a>
           <a href="privacy-policy.html" class="cookie-settings-link">Privacy Policy</a>
           <a href="cookie-policy.html" class="cookie-settings-link">Cookie Policy</a>
           <button id="cookie-settings-btn" class="cookie-settings-link">Cookie settings</button>

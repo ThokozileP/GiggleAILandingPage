@@ -1,0 +1,70 @@
+/* ─── SCROLL REVEAL ───────────────────────────────────────────────────────── */
+.r {
+  opacity: 0;
+  transform: translateY(22px);
+  transition: opacity .75s cubic-bezier(.16,1,.3,1), transform .75s cubic-bezier(.16,1,.3,1);
+}
+.r.in { opacity: 1; transform: none; }
+.r-d1 { transition-delay: .08s; }
+.r-d2 { transition-delay: .18s; }
+.r-d3 { transition-delay: .28s; }
+.r-d4 { transition-delay: .36s; }
+
+@media (prefers-reduced-motion: reduce) {
+  .r { opacity: 1; transform: none; transition: none; }
+}
+
+/* ─── NAV RESPONSIVE OVERRIDES ────────────────────────────────────────────── */
+/* Loaded after components.css so these overrides win at equal specificity. */
+@media (max-width: 640px) { .nav-ask { display: none; } }
+
+@media (max-width: 860px) {
+  .nav-actions { gap: 10px; }
+  #nav .nav-link,
+  #nav .nav-dropdown { display: none; }
+}
+
+/* ─── MOBILE CENTRE ALIGNMENT ────────────────────────────────────────────── */
+@media (max-width: 700px) {
+  .hero-inner, .product-hero-inner { text-align: center; }
+  .eyebrow { justify-content: center; }
+  .hero-sub, .product-hero-sub { margin-left: auto; margin-right: auto; }
+  .hero-actions { justify-content: center; }
+  .hero-note { text-align: center; }
+  .cta-microcopy { text-align: center; }
+
+  .sec-label { display: flex; justify-content: center; }
+
+  .problem-h2 { text-align: center; }
+  .problem-body { text-align: center; }
+
+  .what-h2 { text-align: center; }
+  .what-body { text-align: center; }
+  .not-tags { justify-content: center; }
+
+  .steps-header { text-align: center; margin-left: auto; margin-right: auto; }
+  .step { text-align: center; }
+  .step-roman { text-align: center; }
+
+  .deliv-h2 { text-align: center; }
+  .deliv-sub { text-align: center; }
+  .deliv-card { text-align: center; padding: 36px 20px; }
+  .deliv-card::before { margin-left: auto; margin-right: auto; }
+
+  .who-intro { text-align: center; margin-left: auto; margin-right: auto; }
+  .who-card { text-align: center; }
+  .who-roles { text-align: center; }
+
+  .reg-intro { text-align: center; }
+  .reg-ref { text-align: center; }
+  .reg-body { text-align: center; }
+
+  .faq-q { text-align: center; }
+  .faq-a { text-align: center; }
+
+  .cta-pair { justify-content: center; }
+  .mid-cta-actions { align-items: center !important; width: 100%; }
+  .mid-cta-pair { justify-content: center !important; flex-wrap: wrap; }
+  .mid-cta-microcopy { text-align: center !important; }
+  .btn { white-space: normal; text-align: center; }
+}

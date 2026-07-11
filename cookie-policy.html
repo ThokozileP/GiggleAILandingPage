@@ -11,335 +11,24 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&amp;family=Inter:wght@300;400;500;600&amp;display=swap" rel="stylesheet">
 
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-    html { font-size: 16px; scroll-behavior: smooth; }
+  <link rel="icon" href="assets/icons/favicon.svg" type="image/svg+xml">
 
-    :root {
-      --ink:        #06070E;
-      --bg:         #07080F;
-      --surface:    #0C0D18;
-      --surface-2:  #10121F;
-      --border:     #181B28;
-      --border-2:   #20243A;
-      --gold:       #2060E8;
-      --gold-dim:   rgba(32,96,232,.35);
-      --gold-faint: rgba(32,96,232,.07);
-      --cream:      #F2EEE6;
-      --muted:      #7A7770;
-      --ghost:      #383C50;
-      --white:      #FAFAF8;
-    }
-
-    [data-theme="light"] {
-      --bg:         #FFFFFF;
-      --surface:    #F5F6FA;
-      --surface-2:  #ECEEF5;
-      --border:     #E0E2EE;
-      --border-2:   #CDD0DF;
-      --cream:      #1A1C2A;
-      --muted:      #5A6275;
-      --ghost:      #6B748E;
-      --white:      #080A14;
-    }
-    [data-theme="light"] #policy-nav { background: rgba(255,255,255,.94); }
-
-    body {
-      background: var(--bg);
-      color: var(--cream);
-      font-family: 'Inter', system-ui, sans-serif;
-      font-weight: 300;
-      line-height: 1.7;
-      -webkit-font-smoothing: antialiased;
-      -moz-osx-font-smoothing: grayscale;
-      overflow-x: hidden;
-    }
-
-    h1, h2, h3 {
-      font-family: 'Cormorant Garamond', Georgia, serif;
-      line-height: 1.08;
-      letter-spacing: -0.015em;
-    }
-
-    a { color: inherit; text-decoration: none; }
-
-    .wrap {
-      max-width: 1160px;
-      margin: 0 auto;
-      padding: 0 56px;
-    }
-    @media (max-width: 900px) { .wrap { padding: 0 32px; } }
-    @media (max-width: 600px) { .wrap { padding: 0 20px; } }
-
-    /* Nav */
-    #policy-nav {
-      position: fixed;
-      inset: 0 0 auto;
-      z-index: 200;
-      padding: 20px 0;
-      background: rgba(9,9,9,.88);
-      backdrop-filter: blur(16px);
-      -webkit-backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--border);
-    }
-
-    .nav-flex {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .nav-logo-img { display: block; height: 34px; width: auto; }
-
-    .btn {
-      display: inline-block;
-      font-size: 10.5px;
-      font-weight: 500;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      padding: 11px 24px;
-      cursor: pointer;
-      border: none;
-      transition: opacity .2s, transform .2s;
-    }
-    .btn:hover { opacity: .86; transform: translateY(-1px); }
-    .btn-outline {
-      background: transparent;
-      color: var(--gold);
-      border: 1px solid var(--gold-dim);
-    }
-
-    .theme-toggle {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: transparent; border: 1px solid var(--border-2);
-      cursor: pointer; display: flex; align-items: center; justify-content: center;
-      color: var(--muted); transition: border-color .2s, color .2s; flex-shrink: 0;
-    }
-    .theme-toggle:hover { border-color: var(--gold-dim); color: var(--gold); }
-    .theme-toggle svg { width: 16px; height: 16px; stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; stroke-linejoin: round; }
-    .social-link {
-      width: 34px; height: 34px; border-radius: 50%;
-      background: transparent; border: 1px solid var(--border-2);
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); transition: border-color .2s, color .2s; flex-shrink: 0;
-    }
-    .social-link:hover { border-color: var(--gold-dim); color: var(--gold); }
-    .social-link svg { width: 15px; height: 15px; fill: currentColor; }
-    .icon-moon { display: none; }
-    .icon-sun  { display: block; }
-    [data-theme="light"] .icon-moon { display: block; }
-    [data-theme="light"] .icon-sun  { display: none; }
-
-    /* Content */
-    .policy-page {
-      padding: 140px 0 100px;
-      max-width: 760px;
-    }
-
-    .policy-eyebrow {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: .28em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: 28px;
-    }
-
-    .policy-h1 {
-      font-size: clamp(36px, 5vw, 56px);
-      font-weight: 400;
-      color: var(--white);
-      margin-bottom: 12px;
-    }
-
-    .policy-meta {
-      font-size: 12px;
-      color: var(--ghost);
-      letter-spacing: .04em;
-      margin-bottom: 64px;
-    }
-
-    .policy-section { margin-bottom: 52px; }
-
-    .policy-h2 {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(20px, 2.4vw, 26px);
-      font-weight: 500;
-      color: var(--white);
-      margin-bottom: 14px;
-    }
-
-    .policy-body {
-      font-size: 14.5px;
-      color: var(--muted);
-      line-height: 1.82;
-    }
-
-    .policy-body p + p { margin-top: 14px; }
-
-    .policy-body ul {
-      margin: 14px 0 14px 20px;
-      list-style: disc;
-    }
-
-    .policy-body li { margin-bottom: 6px; }
-
-    .policy-body a {
-      color: var(--gold);
-      text-decoration: underline;
-      text-underline-offset: 2px;
-      text-decoration-color: var(--gold-dim);
-      transition: text-decoration-color .2s;
-    }
-    .policy-body a:hover { text-decoration-color: var(--gold); }
-
-    /* Cookie table */
-    .cookie-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-top: 16px;
-      font-size: 13px;
-    }
-
-    .cookie-table th {
-      font-size: 10px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      color: var(--cream);
-      text-align: left;
-      padding: 10px 16px;
-      border-bottom: 1px solid var(--border-2);
-    }
-
-    .cookie-table td {
-      padding: 12px 16px;
-      color: var(--muted);
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    .cookie-table tr:last-child td { border-bottom: none; }
-
-    .badge {
-      display: inline-block;
-      font-size: 9px;
-      font-weight: 600;
-      letter-spacing: .12em;
-      text-transform: uppercase;
-      padding: 3px 8px;
-      border: 1px solid var(--gold-dim);
-      color: var(--gold);
-      white-space: nowrap;
-    }
-
-    .policy-divider {
-      border: none;
-      border-top: 1px solid var(--border);
-      margin: 52px 0;
-    }
-
-    /* Footer */
-    footer {
-      padding: 44px 0;
-      border-top: 1px solid var(--border);
-    }
-
-    .footer-flex {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 24px;
-    }
-
-    .footer-logo-img { display: block; height: 40px; width: auto; }
-
-    .footer-right p {
-      font-size: 11.5px;
-      color: var(--ghost);
-      letter-spacing: .04em;
-      text-align: right;
-    }
-
-    @media (max-width: 600px) {
-      footer { text-align: center; }
-      .footer-right p { text-align: center; }
-      .footer-legal { justify-content: center; }
-      .cookie-table th, .cookie-table td { padding: 10px 8px; }
-    }
-
-    .footer-legal {
-      margin-top: 8px;
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      justify-content: flex-end;
-    }
-
-    /* Cookie consent — same as main site */
-    #cookie-banner {
-      position: fixed;
-      bottom: 0; left: 0; right: 0;
-      z-index: 9999;
-      background: var(--surface-2);
-      border-top: 1px solid var(--border-2);
-      padding: 22px 0;
-      transform: translateY(110%);
-      transition: transform .4s cubic-bezier(.4,0,.2,1);
-    }
-    #cookie-banner.cb-visible { transform: translateY(0); }
-    .cookie-banner-inner { display: flex; align-items: center; gap: 36px; justify-content: space-between; }
-    .cookie-banner-text { flex: 1; min-width: 0; }
-    .cookie-banner-desc { font-size: 13px; color: var(--muted); line-height: 1.65; margin-bottom: 7px; }
-    .cookie-banner-links { font-size: 11px; color: var(--ghost); }
-    .cookie-banner-links a { color: var(--gold); text-decoration: underline; text-underline-offset: 2px; text-decoration-color: var(--gold-dim); transition: text-decoration-color .2s; }
-    .cookie-banner-links a:hover { text-decoration-color: var(--gold); }
-    .cookie-banner-actions { display: flex; align-items: center; gap: 10px; flex-shrink: 0; flex-wrap: wrap; }
-    .btn-sm { font-size: 10px; padding: 10px 18px; }
-    .btn-gold { background: var(--gold); color: #ffffff; }
-    #cookie-modal-overlay { position: fixed; inset: 0; z-index: 10000; background: rgba(6,7,14,.8); display: flex; align-items: center; justify-content: center; padding: 24px; opacity: 0; pointer-events: none; transition: opacity .25s; }
-    #cookie-modal-overlay.cm-visible { opacity: 1; pointer-events: all; }
-    .cookie-modal { background: var(--surface); border: 1px solid var(--border-2); max-width: 560px; width: 100%; max-height: 90vh; overflow-y: auto; padding: 48px 48px 40px; position: relative; box-shadow: 0 32px 80px rgba(0,0,0,.5); }
-    .cookie-modal-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(22px,3vw,28px); font-weight: 500; color: var(--white); margin-bottom: 10px; letter-spacing: -.01em; }
-    .cookie-modal-intro { font-size: 13.5px; color: var(--muted); line-height: 1.7; margin-bottom: 4px; }
-    .cookie-category { padding: 20px 0; border-top: 1px solid var(--border); }
-    .cookie-cat-header { display: flex; align-items: center; justify-content: space-between; gap: 16px; margin-bottom: 7px; }
-    .cookie-cat-title { font-size: 11px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; color: var(--cream); }
-    .cookie-always-on { font-size: 9.5px; font-weight: 500; letter-spacing: .14em; text-transform: uppercase; color: var(--gold); border: 1px solid var(--gold-dim); padding: 3px 10px; white-space: nowrap; }
-    .cookie-cat-desc { font-size: 13px; color: var(--muted); line-height: 1.65; }
-    .c-toggle { position: relative; width: 44px; height: 24px; flex-shrink: 0; cursor: pointer; }
-    .c-toggle input { opacity: 0; width: 0; height: 0; position: absolute; }
-    .c-toggle-track { position: absolute; inset: 0; background: var(--border-2); cursor: pointer; transition: background .2s; }
-    .c-toggle input:checked + .c-toggle-track { background: var(--gold); }
-    .c-toggle-track::after { content: ''; position: absolute; width: 18px; height: 18px; left: 3px; top: 3px; background: #fff; transition: transform .2s; }
-    .c-toggle input:checked + .c-toggle-track::after { transform: translateX(20px); }
-    .c-toggle input:focus-visible + .c-toggle-track { outline: 2px solid var(--gold); outline-offset: 2px; }
-    .cookie-modal-footer { margin-top: 28px; padding-top: 20px; border-top: 1px solid var(--border); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 10px; }
-    .cookie-modal-footer-right { display: flex; gap: 10px; flex-wrap: wrap; }
-    .cookie-modal-close { position: absolute; top: 14px; right: 14px; width: 32px; height: 32px; background: transparent; border: 1px solid var(--border-2); color: var(--muted); cursor: pointer; display: flex; align-items: center; justify-content: center; transition: border-color .2s, color .2s; padding: 0; }
-    .cookie-modal-close svg { stroke: currentColor; fill: none; stroke-width: 1.5; stroke-linecap: round; }
-    .cookie-modal-close:hover { border-color: var(--gold-dim); color: var(--gold); }
-    .cookie-settings-link { font-size: 11px; color: var(--ghost); letter-spacing: .04em; text-decoration: underline; text-underline-offset: 2px; cursor: pointer; background: none; border: none; padding: 0; font-family: inherit; transition: color .2s; }
-    .cookie-settings-link:hover { color: var(--muted); }
-
-    @media (max-width: 700px) {
-      .cookie-banner-inner { flex-direction: column; align-items: flex-start; }
-      .cookie-banner-actions { width: 100%; }
-      .cookie-modal { padding: 36px 24px 28px; }
-      .cookie-modal-footer { flex-direction: column; align-items: stretch; }
-      .cookie-modal-footer-right { justify-content: stretch; }
-      .cookie-modal-footer .btn-sm { flex: 1; text-align: center; }
-    }
-  </style>
+  <link rel="stylesheet" href="assets/css/tokens.css">
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/layout.css">
+  <link rel="stylesheet" href="assets/css/components.css">
+  <link rel="stylesheet" href="assets/css/utilities.css">
+  <link rel="stylesheet" href="assets/css/themes.css">
 </head>
 <body>
+
+<a href="#main" class="skip-link">Skip to content</a>
 
 <nav id="policy-nav">
   <div class="wrap">
     <div class="nav-flex">
       <a href="index.html" aria-label="Giggle AI Innovation — Home">
-        <img src="asset/Giggleaiinnovation-logo-dark.png" alt="Giggle AI Innovation" class="nav-logo-img" id="navLogo">
+        <img src="assets/images/giggleaiinnovation-logo-dark.png" alt="Giggle AI Innovation" class="nav-logo-img" id="navLogo">
       </a>
       <div style="display:flex; align-items:center; gap:12px;">
         <a href="https://www.linkedin.com/company/giggle-ai-innovation" target="_blank" rel="noopener" class="social-link" aria-label="Giggle AI Innovation on LinkedIn">
@@ -356,12 +45,12 @@
 </nav>
 
 
-<main>
+<main id="main">
   <div class="wrap">
     <div class="policy-page">
       <p class="policy-eyebrow">Legal</p>
       <h1 class="policy-h1">Cookie Policy</h1>
-      <p class="policy-meta">Giggle AI Innovation &nbsp;&bull;&nbsp; Last updated: May 2026</p>
+      <p class="policy-meta">Giggle AI Innovation &nbsp;&bull;&nbsp; Last updated: July 2026</p>
 
       <div class="policy-section">
         <h2 class="policy-h2">What are cookies?</h2>
@@ -423,7 +112,7 @@
         <div class="policy-body">
           <p>Analytics cookies help us understand how visitors use the website — which pages they visit, how long they stay, and how they arrived. This information is used in aggregate to improve content and the user experience.</p>
           <p><strong style="color:var(--cream);">Tool:</strong> <a href="https://clarity.microsoft.com" target="_blank" rel="noopener">Microsoft Clarity</a>, used to understand aggregate website usage, page interactions, and conversion events. See <a href="https://privacy.microsoft.com/privacystatement" target="_blank" rel="noopener">Microsoft's Privacy Statement</a>.</p>
-          <p><strong style="color:var(--cream);">What is tracked:</strong> page views, referral sources, browser/device type, interaction events, and the following conversion events: Runtime Control Assessment Click, Calendly Click, Contact Email Click, LinkedIn Click.</p>
+          <p><strong style="color:var(--cream);">What is tracked:</strong> page views, referral sources, browser/device type, interaction events, and the following conversion events: Demo Request Click, Calendly Click, Contact Email Click, LinkedIn Click, Platform Link Click.</p>
           <p><strong style="color:var(--cream);">Consent:</strong> Microsoft Clarity only loads after you give analytics consent. If you reject analytics, no analytics script is loaded by this site.</p>
           <p>Analytics cookies are <strong style="color:var(--cream);">off by default</strong>. They only activate if you explicitly choose "Accept all" or enable analytics in your cookie preferences.</p>
         </div>
@@ -449,7 +138,7 @@
         <div class="policy-body">
           <p>You can change your cookie preferences at any time:</p>
           <ul>
-            <li>Click the <button id="open-prefs-cp" style="background:none;border:none;padding:0;color:var(--gold);cursor:pointer;font:inherit;text-decoration:underline;text-underline-offset:2px;font-size:inherit;">Cookie settings</button> link in the footer of any page.</li>
+            <li>Click the <button data-cookie-settings-link style="background:none;border:none;padding:0;color:var(--gold);cursor:pointer;font:inherit;text-decoration:underline;text-underline-offset:2px;font-size:inherit;">Cookie settings</button> link in the footer of any page.</li>
             <li>In the preferences modal, toggle analytics and marketing on or off, then click "Save preferences".</li>
             <li>To withdraw all consent, choose "Reject non-essential".</li>
           </ul>
@@ -511,14 +200,16 @@
   <div class="wrap">
     <div class="footer-flex">
       <div>
-        <img src="asset/Giggleaiinnovation-logo-dark.png" alt="Giggle AI Innovation" class="footer-logo-img" id="footerLogo">
+        <img src="assets/images/giggleaiinnovation-logo-dark.png" alt="Giggle AI Innovation" class="footer-logo-img" id="footerLogo" loading="lazy" decoding="async">
       </div>
       <div class="footer-right">
-        <p>Clinical Agent Runtime Control for Healthcare AI</p>
+        <p>CARC &mdash; Runtime Control for Clinical AI Agents</p>
         <p style="margin-top:5px;">&copy; 2026 Giggle AI Innovation. All rights reserved.</p>
         <div class="footer-legal">
+          <a href="developers.html" class="cookie-settings-link">Developers</a>
+          <a href="frameworks.html" class="cookie-settings-link">Frameworks</a>
           <a href="privacy-policy.html" class="cookie-settings-link">Privacy Policy</a>
-          <a href="cookie-policy.html" class="cookie-settings-link">Cookie Policy</a>
+          <a href="cookie-policy.html" class="cookie-settings-link" style="color:var(--gold);">Cookie Policy</a>
           <button id="cookie-settings-btn" class="cookie-settings-link">Cookie settings</button>
         </div>
       </div>
@@ -596,109 +287,13 @@
   </div>
 </div>
 
-
-<script>
-  // Theme
-  var themeToggle = document.getElementById('themeToggle');
-  var htmlEl = document.documentElement;
-  var logos = [document.getElementById('navLogo'), document.getElementById('footerLogo')];
-  var DARK_LOGO  = 'asset/Giggleaiinnovation-logo-dark.png';
-  var LIGHT_LOGO = 'asset/Giggleaiinnovation-logo-light.png';
-  function applyTheme(light) {
-    if (light) { htmlEl.setAttribute('data-theme', 'light'); }
-    else        { htmlEl.removeAttribute('data-theme'); }
-    logos.forEach(function(el) { if (el) el.src = light ? LIGHT_LOGO : DARK_LOGO; });
-  }
-  applyTheme(localStorage.getItem('giggleTheme') !== 'dark');
-  themeToggle.addEventListener('click', function() {
-    var isLight = htmlEl.getAttribute('data-theme') === 'light';
-    localStorage.setItem('giggleTheme', isLight ? 'dark' : 'light');
-    applyTheme(!isLight);
-  });
-</script>
-
-<script>
-// Cookie Consent
-(function () {
-  var CONSENT_KEY = 'giggle_cookie_consent';
-  var CONSENT_VERSION = '1.0';
-
-  function getConsent() {
-    try {
-      var raw = localStorage.getItem(CONSENT_KEY);
-      if (!raw) return null;
-      var c = JSON.parse(raw);
-      return c.version === CONSENT_VERSION ? c : null;
-    } catch (e) { return null; }
-  }
-
-  function writeConsent(analytics, marketing) {
-    var c = { necessary: true, analytics: !!analytics, marketing: !!marketing, timestamp: new Date().toISOString(), version: CONSENT_VERSION };
-    localStorage.setItem(CONSENT_KEY, JSON.stringify(c));
-    return c;
-  }
-
-  function loadAnalytics() {
-    if (window.clarity) return;
-    (function(c,l,a,r,i,t,y){
-      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
-      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
-      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
-    })(window,document,"clarity","script","wpvlzt1dr4");
-  }
-  function loadMarketing() { /* MARKETING_PLACEHOLDER */ }
-  function activateConsent(c) { if (c.analytics) loadAnalytics(); if (c.marketing) loadMarketing(); }
-
-  var banner   = document.getElementById('cookie-banner');
-  var overlay  = document.getElementById('cookie-modal-overlay');
-  var cmAnalyt = document.getElementById('cm-analytics');
-  var cmMarket = document.getElementById('cm-marketing');
-
-  function showBanner() { banner.classList.add('cb-visible'); }
-  function hideBanner() { banner.classList.remove('cb-visible'); }
-
-  function showModal() {
-    var c = getConsent();
-    cmAnalyt.checked = c ? c.analytics : false;
-    cmMarket.checked = c ? c.marketing : false;
-    overlay.classList.add('cm-visible');
-    overlay.setAttribute('aria-hidden', 'false');
-    document.body.style.overflow = 'hidden';
-    var cmClose = document.getElementById('cm-close');
-    requestAnimationFrame(function () { cmClose.focus(); });
-  }
-
-  function hideModal() {
-    overlay.classList.remove('cm-visible');
-    overlay.setAttribute('aria-hidden', 'true');
-    document.body.style.overflow = '';
-  }
-
-  function acceptAll() { activateConsent(writeConsent(true, true)); hideBanner(); hideModal(); }
-  function rejectAll() { writeConsent(false, false); hideBanner(); hideModal(); }
-  function savePrefs() { activateConsent(writeConsent(cmAnalyt.checked, cmMarket.checked)); hideBanner(); hideModal(); }
-
-  document.getElementById('cb-accept').addEventListener('click', acceptAll);
-  document.getElementById('cb-reject').addEventListener('click', rejectAll);
-  document.getElementById('cb-manage').addEventListener('click', showModal);
-  document.getElementById('cm-accept-all').addEventListener('click', acceptAll);
-  document.getElementById('cm-reject-all').addEventListener('click', rejectAll);
-  document.getElementById('cm-save').addEventListener('click', savePrefs);
-  document.getElementById('cm-close').addEventListener('click', hideModal);
-
-  overlay.addEventListener('click', function (e) { if (e.target === overlay) hideModal(); });
-  document.addEventListener('keydown', function (e) { if (e.key === 'Escape' && overlay.classList.contains('cm-visible')) hideModal(); });
-
-  var settBtn = document.getElementById('cookie-settings-btn');
-  if (settBtn) settBtn.addEventListener('click', function (e) { e.preventDefault(); showModal(); });
-
-  var openPrefsBtn = document.getElementById('open-prefs-cp');
-  if (openPrefsBtn) openPrefsBtn.addEventListener('click', function (e) { e.preventDefault(); showModal(); });
-
-  var existing = getConsent();
-  if (!existing) { setTimeout(showBanner, 900); } else { activateConsent(existing); }
-})();
-</script>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/theme.js"></script>
+<script src="assets/js/navigation.js"></script>
+<script src="assets/js/animations.js"></script>
+<script src="assets/js/analytics.js"></script>
+<script src="assets/js/cookie-consent.js"></script>
+<script src="assets/js/main.js"></script>
 
 </body>
 </html>
