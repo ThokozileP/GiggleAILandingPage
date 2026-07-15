@@ -7,6 +7,7 @@ The current positioning is **Clinical Agent Runtime Control for Healthcare AI**.
 ## Stack
 
 - Pure HTML and CSS, with no framework or build step
+- A Vercel serverless function for contact sales email delivery via Resend
 - Google Fonts: Cormorant Garamond and Inter
 - Vanilla JavaScript for scroll reveal, theme switching, cookie preferences, and consent-based analytics loading
 
@@ -28,9 +29,9 @@ GiggleAILandingPage/
 
 Static site. No build step is required.
 
-Vercel: import the repo, set Framework to `Other`, set Output Directory to `.`, and leave Build Command empty.
+Vercel: import the repo, set Framework to `Other`, set Output Directory to `.`, and leave Build Command empty. Add `RESEND_API_KEY` and `CONTACT_FROM_EMAIL` (for example, `Giggle AI Website <contact@giggleaiinnovation.com>`) as environment variables. The sender domain must be verified in Resend.
 
-Any static host: upload the HTML files and the `asset/` folder.
+The contact sales form requires a host that runs the `/api/contact-sales.js` serverless function. On a static-only host, the site remains available but form submissions cannot be delivered.
 
 ## Contact
 

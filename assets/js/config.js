@@ -11,7 +11,6 @@ window.CARC_CONFIG = {
   openApiSpecUrl: 'https://api.giggleaiinnovation.com/openapi.json',
   controlConsoleUrl: 'https://console.giggleaiinnovation.com',
   githubUrl: null,
-  demoUrl: 'https://calendly.com/thokozile/ai-decision-system-diagnostic-intro-call',
   contactEmail: 'info@giggleaiinnovation.com'
 };
 

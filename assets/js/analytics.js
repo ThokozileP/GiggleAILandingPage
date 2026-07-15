@@ -15,11 +15,8 @@ window.CARC_ANALYTICS = (function () {
   }
 
   function initEventTracking() {
-    document.querySelectorAll('a[href*="calendly.com"]').forEach(function (el) {
-      if (el.textContent.indexOf('Demo') !== -1 || el.textContent.indexOf('Assessment') !== -1) {
-        el.addEventListener('click', function () { pe('Demo Request Click'); });
-      }
-      el.addEventListener('click', function () { pe('Calendly Click'); });
+    document.querySelectorAll('[data-contact-sales-open]').forEach(function (el) {
+      el.addEventListener('click', function () { pe('Demo Request Click'); });
     });
 
     document.querySelectorAll('a[href^="mailto:"]').forEach(function (el) {
@@ -36,5 +33,5 @@ window.CARC_ANALYTICS = (function () {
     });
   }
 
-  return { loadAnalytics: loadAnalytics, loadMarketing: loadMarketing, initEventTracking: initEventTracking };
+  return { loadAnalytics: loadAnalytics, loadMarketing: loadMarketing, initEventTracking: initEventTracking, track: pe };
 })();
