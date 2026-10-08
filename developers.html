@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="The CARC Developer Platform: Runtime SDK, quickstart, and integration patterns for instrumenting clinical AI agents with runtime control. Design partner preview available now.">
+  <meta name="description" content="The CARC Developer Platform: Runtime SDK, quickstart, and integration patterns for instrumenting AI agents with runtime control. Design partner preview available now.">
   <title>Developer Platform | CARC by Giggle AI Innovation</title>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -16,12 +16,12 @@
   <meta property="og:type"        content="website">
   <meta property="og:url"         content="https://giggleaiinnovation.com/developers.html">
   <meta property="og:title"       content="Developer Platform | CARC by Giggle AI Innovation">
-  <meta property="og:description" content="Runtime SDK, quickstart, and integration patterns for instrumenting clinical AI agents with runtime control.">
+  <meta property="og:description" content="Runtime SDK, quickstart, and integration patterns for instrumenting AI agents with runtime control.">
   <meta property="og:image"       content="https://giggleaiinnovation.com/assets/images/giggleaiinnovation-logo-dark.png">
 
   <meta name="twitter:card"        content="summary_large_image">
   <meta name="twitter:title"       content="Developer Platform | CARC by Giggle AI Innovation">
-  <meta name="twitter:description" content="Runtime SDK, quickstart, and integration patterns for instrumenting clinical AI agents with runtime control.">
+  <meta name="twitter:description" content="Runtime SDK, quickstart, and integration patterns for instrumenting AI agents with runtime control.">
 
   <link rel="stylesheet" href="assets/css/tokens.css">
   <link rel="stylesheet" href="assets/css/base.css">
@@ -38,7 +38,7 @@
 <nav id="nav">
   <div class="wrap">
     <div class="nav-flex">
-      <a href="/" aria-label="Giggle AI Innovation — Home">
+      <a href="/" aria-label="Giggle AI Innovation home page">
         <img src="assets/images/giggleaiinnovation-logo-dark.png" alt="Giggle AI Innovation" class="nav-logo-img" id="navLogo">
       </a>
       <div class="nav-actions">
@@ -95,8 +95,8 @@
       <p class="eyebrow" style="margin-bottom:20px;">Developer Platform</p>
       <h1 class="product-hero-h1">The CARC Developer Platform.</h1>
       <p class="product-hero-sub">
-        A Runtime SDK, quickstart, and integration patterns for instrumenting clinical AI agents
-        with runtime control &mdash; without rebuilding the agent itself.
+        A Runtime SDK, quickstart, and integration patterns for instrumenting AI agents
+        with runtime control, without rebuilding the agent itself.
       </p>
       <div class="cta-pair">
         <a href="#" data-config-url="developerPortalUrl" data-config-hide-if-missing target="_blank" rel="noopener" class="btn btn-gold">Open Developer Portal &#8599;</a>
@@ -134,9 +134,9 @@
 <section class="section">
   <div class="wrap">
     <p class="sec-label">Where the SDK sits</p>
-    <div class="arch-diagram r" role="img" aria-label="Your clinical AI agent connects through the CARC Runtime SDK and Adapter Registry into the Runtime Engine, which feeds the Evidence Engine and Control Console.">
+    <div class="arch-diagram r" role="img" aria-label="Your AI agent connects through the CARC Runtime SDK and Adapter Registry into the Runtime Engine, which feeds the Evidence Engine and Control Console.">
       <div class="arch-row">
-        <div class="arch-node"><span class="arch-node-label">Your Clinical<br>AI Agent</span></div>
+        <div class="arch-node"><span class="arch-node-label">Your<br>AI Agent</span></div>
         <div class="arch-connector">&rarr;</div>
         <div class="arch-node arch-node--accent"><span class="arch-node-label">CARC<br>Runtime SDK</span></div>
         <div class="arch-connector">&rarr;</div>
@@ -162,15 +162,15 @@
       <p class="code-label">Illustrative example</p>
       <div class="code-block"><span class="cm">// initialize the runtime client and start a session</span>
 <span class="kw">const</span> carc = <span class="kw">new</span> CarcRuntimeClient({ apiKey: env.CARC_API_KEY });
-<span class="kw">const</span> session = carc.runtime.<span class="kw">startSession</span>({ agentId: <span class="str">'triage-agent'</span> });
+<span class="kw">const</span> session = carc.runtime.<span class="kw">startSession</span>({ agentId: <span class="str">'claims-assessment-agent'</span> });
 
-<span class="cm">// record a recommendation with its clinical context</span>
+<span class="cm">// record a recommendation with its decision context</span>
 <span class="kw">const</span> decision = <span class="kw">await</span> session.<span class="kw">record</span>({
   recommendation: agentOutput,
-  context: clinicalContext,
+  context: decisionContext,
 });
 
-<span class="cm">// capture clinician intervention as evidence</span>
+<span class="cm">// capture reviewer intervention as evidence</span>
 <span class="kw">await</span> session.<span class="kw">onIntervention</span>(evidence => carc.evidence.<span class="kw">store</span>(evidence));</div>
     </div>
   </div>
@@ -184,15 +184,15 @@
     <div class="ui-preview-frame r">
       <div class="ui-preview-chrome">
         <span class="ui-preview-dot"></span><span class="ui-preview-dot"></span><span class="ui-preview-dot"></span>
-        <span class="ui-preview-label">developers.giggleaiinnovation.com &mdash; Illustrative Preview</span>
+        <span class="ui-preview-label">developers.giggleaiinnovation.com, Illustrative Preview</span>
       </div>
       <div class="ui-preview-body">
-        <div class="ui-row"><span class="ui-row-id">Guide</span><span>Quickstart &mdash; instrumenting your first agent</span><span class="ui-row-status">Docs</span></div>
-        <div class="ui-row"><span class="ui-row-id">Guide</span><span>Adapter Registry &mdash; connecting existing agents</span><span class="ui-row-status">Docs</span></div>
+        <div class="ui-row"><span class="ui-row-id">Guide</span><span>Quickstart: instrumenting your first agent</span><span class="ui-row-status">Docs</span></div>
+        <div class="ui-row"><span class="ui-row-id">Guide</span><span>Adapter Registry: connecting existing agents</span><span class="ui-row-status">Docs</span></div>
         <div class="ui-row"><span class="ui-row-id">Reference</span><span>Runtime SDK method reference</span><span class="ui-row-status ui-row-status--flag">SDK</span></div>
         <div class="ui-row"><span class="ui-row-id">Reference</span><span>Evidence &amp; Decision Replay queries</span><span class="ui-row-status ui-row-status--flag">API</span></div>
       </div>
-      <p class="ui-preview-note">Representative Developer Portal structure &mdash; full docs live in the hosted portal</p>
+      <p class="ui-preview-note">Representative Developer Portal structure. Full docs live in the hosted portal</p>
     </div>
   </div>
 </section>
@@ -254,7 +254,7 @@
         <img src="assets/images/giggleaiinnovation-logo-dark.png" alt="Giggle AI Innovation" class="footer-logo-img" id="footerLogo" loading="lazy" decoding="async">
       </div>
       <div class="footer-right">
-        <p>CARC &mdash; Runtime Control for Clinical AI Agents</p>
+        <p>CARC: Runtime Control for High-Stakes AI Decisions</p>
         <p style="margin-top:5px;">&copy; 2026 Giggle AI Innovation. All rights reserved.</p>
         <div class="footer-legal">
           <a href="developers.html" class="cookie-settings-link" style="color:var(--gold);">Developers</a>
@@ -306,7 +306,7 @@
     </button>
 
     <h2 class="cookie-modal-title" id="cookie-modal-title">Cookie Preferences</h2>
-    <p class="cookie-modal-intro">Choose which cookies you allow. Strictly necessary cookies are always on — they keep the site working. All other categories are off by default.</p>
+    <p class="cookie-modal-intro">Choose which cookies you allow. Strictly necessary cookies are always on: they keep the site working. All other categories are off by default.</p>
 
     <div class="cookie-category">
       <div class="cookie-cat-header">
@@ -324,7 +324,7 @@
           <span class="c-toggle-track"></span>
         </label>
       </div>
-      <p class="cookie-cat-desc">Help us understand how visitors interact with the site — pages viewed, time spent, and entry sources. Used to improve content and experience. No personal data is shared with third parties.</p>
+      <p class="cookie-cat-desc">Help us understand how visitors interact with the site: pages viewed, time spent, and entry sources. Used to improve content and experience. No personal data is shared with third parties.</p>
     </div>
 
     <div class="cookie-category">

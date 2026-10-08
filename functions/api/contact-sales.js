@@ -48,7 +48,7 @@ export async function onRequestPost(context) {
     'Role: ' + (role || 'Not provided'),
     'Interest: ' + (interest || 'CARC platform demo'),
     '',
-    'Clinical AI system / request:',
+    'AI system / request:',
     message || 'No additional details provided.'
   ].join('\n');
 
@@ -64,7 +64,7 @@ export async function onRequestPost(context) {
         from: env.CONTACT_FROM_EMAIL || 'Giggle AI Website <contact@giggleaiinnovation.com>',
         to: [SALES_INBOX],
         reply_to: email,
-        subject: 'CARC demo request — ' + company,
+        subject: 'CARC demo request: ' + company,
         text: text
       })
     });

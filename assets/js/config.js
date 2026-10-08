@@ -1,6 +1,6 @@
 /**
  * Single source of truth for external CARC platform URLs.
- * Hosted subdomains are not live yet — update these when they are.
+ * Hosted subdomains are not live yet. Update these when they are.
  * Any element with data-config-url="<key>" gets its href set from here.
  * Any element with data-config-hide-if-missing is removed if the value is falsy
  * (this is how the GitHub link stays hidden until a real repo URL exists).

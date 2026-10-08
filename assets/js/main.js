@@ -20,7 +20,7 @@ function initContactSales() {
     '<div class="sales-modal-panel" role="document">',
       '<button class="sales-modal-close" type="button" aria-label="Close contact sales form">&times;</button>',
       '<p class="sec-label">Contact Sales</p>',
-      '<h2 class="sales-modal-title" id="contact-sales-title">See CARC in your clinical AI workflow.</h2>',
+      '<h2 class="sales-modal-title" id="contact-sales-title">See CARC in your AI workflow.</h2>',
       '<p class="sales-modal-intro">Tell us a little about your team and what you are building. We will respond directly to arrange a focused demo.</p>',
       '<form class="sales-form" id="contact-sales-form">',
         '<div class="sales-form-grid">',
@@ -30,7 +30,7 @@ function initContactSales() {
           '<div class="sales-field"><label for="sales-role">Role</label><input id="sales-role" name="role" type="text" autocomplete="organization-title"></div>',
         '</div>',
         '<div class="sales-field"><label for="sales-interest">What would you like to explore?</label><select id="sales-interest" name="interest"><option value="CARC platform demo">CARC platform demo</option><option value="Developer platform and API">Developer Platform &amp; API</option><option value="Runtime metrics">Runtime Metrics</option><option value="Control Console">Control Console</option><option value="Design partnership">Design partnership</option></select></div>',
-        '<div class="sales-field"><label for="sales-message">Tell us about your clinical AI system</label><textarea id="sales-message" name="message" rows="4" placeholder="Where are you in development or deployment, and what runtime control challenge are you solving?"></textarea></div>',
+        '<div class="sales-field"><label for="sales-message">Tell us about your AI system</label><textarea id="sales-message" name="message" rows="4" placeholder="Where are you in development or deployment, and what runtime control challenge are you solving?"></textarea></div>',
         '<div class="sales-honeypot" aria-hidden="true"><label for="sales-website">Website</label><input id="sales-website" name="website" type="text" tabindex="-1" autocomplete="off"></div>',
         '<label class="sales-consent"><input name="privacy" type="checkbox" required><span>I agree that Giggle AI Innovation may use these details to respond to my request. See the <a href="privacy-policy.html">Privacy Policy</a>.</span></label>',
         '<p class="sales-form-note">We will use your details only to respond to this request. No mailing lists or unsolicited marketing.</p>',
@@ -109,7 +109,7 @@ function initContactSales() {
       if (!response.ok) throw new Error(result.error || 'Unable to send your request.');
 
       form.reset();
-      status.textContent = 'Thank you — your request has been sent.';
+      status.textContent = 'Thank you. Your request has been sent.';
       if (window.CARC_ANALYTICS) window.CARC_ANALYTICS.track('Contact Sales Submit');
     } catch (error) {
       status.innerHTML = 'Could not send. Email us at <a href="mailto:' + salesEmail + '">' + salesEmail + '</a>.';
